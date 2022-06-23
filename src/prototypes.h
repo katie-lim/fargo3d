@@ -1,5 +1,5 @@
 #ifdef __GPU
-#define ex extern "C" 
+#define ex extern "C"
 #else
 #define ex extern
 #endif
@@ -136,6 +136,7 @@ ex void ComputePressureFieldAd_cpu(void);
 
 //ComPresIso.c prototypes;
 ex void ComputePressureFieldIso_cpu(void);
+ex void Photoevaporation_cpu(real);
 
 //ComPresPoly.c prototypes;
 ex void ComputePressureFieldPoly_cpu(void);
@@ -247,9 +248,9 @@ ex void SubStep3_cpu(real);
 
 //transport Prototypes
 ex void VanLeerX(Field*, Field*, Field*, real);
-ex void TransportX(Field*, Field*, Field*, real); 
-ex void TransportY(Field*, Field*, real); 
-ex void TransportZ(Field*, Field*, real); 
+ex void TransportX(Field*, Field*, Field*, real);
+ex void TransportY(Field*, Field*, real);
+ex void TransportZ(Field*, Field*, real);
 ex void X_advection (Field*, real);
 ex void transport(real);
 
@@ -365,7 +366,7 @@ ex void _LorentzForce_cpu(real, int, int, int, int, int, int, int, int, int, int
 ex void UpdateMagneticField (real, int, int, int);
 ex void _UpdateMagneticField_cpu(real,int,int,int,int,int,int,int,int,int,
 			      Field*,Field*,Field*);
-  
+
 
 ex void ComputeMHD (real);
 ex void ComputeDivergence (Field *, Field *, Field *);
@@ -490,6 +491,7 @@ ex void reduction_SUM_gpu (Field *, int, int, int, int);
 ex void reduction_MIN_gpu (Field *, int, int, int, int);
 
 ex void ComputePressureFieldIso_gpu(void);
+ex void Photoevaporation_gpu(real);
 ex void ComputePressureFieldAd_gpu(void);
 ex void ComputePressureFieldPoly_gpu(void);
 
@@ -643,4 +645,3 @@ ex void Floor_cpu(void);
 
 
 #endif
-
