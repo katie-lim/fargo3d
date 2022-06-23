@@ -53,6 +53,11 @@ AmbipolarDiffusionCoeff	0.0
 
 Resonance		0.5
 
+# Photoevaporation
+
+Phi             0.0
+
+
 # Radial range for damping (in period-ratios).
 # Values smaller than one prevent damping.
 
