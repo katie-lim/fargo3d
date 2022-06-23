@@ -117,6 +117,8 @@ void Photoevaporation_cpu (real dt) {
 #endif
 //<#>
 
+  if (PhysicalTime >= PHOTOEVAPORATIONSTARTTIME) {
+
     ll = l;
     dens[ll] -= sigmaDot[j] * dt;
 
@@ -125,6 +127,8 @@ void Photoevaporation_cpu (real dt) {
     if (dens[ll] < floor) {
       dens[ll] = floor;
     }
+
+  }
 
 
 //<\#>

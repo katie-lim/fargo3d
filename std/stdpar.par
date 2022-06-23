@@ -56,6 +56,7 @@ Resonance		0.5
 # Photoevaporation
 
 Phi             0.0
+PhotoevaporationStartTime   0.0
 
 
 # Radial range for damping (in period-ratios).
