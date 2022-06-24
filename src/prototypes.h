@@ -14,6 +14,12 @@ void plot1d(char*, int, int);
 void plot2d(char*, int, int);
 void plot3d(char*, int, int);
 
+// Photoevaporation
+ex real CalcSigmaDot_cpu(real);
+ex void ComputePhotoevaporationRates_cpu(void);
+ex void Photoevaporation_cpu(real);
+ex void Photoevaporation_gpu(real);
+
 //param.c Prototypes
 
 ex void Explode(void);
@@ -136,7 +142,6 @@ ex void ComputePressureFieldAd_cpu(void);
 
 //ComPresIso.c prototypes;
 ex void ComputePressureFieldIso_cpu(void);
-ex void Photoevaporation_cpu(real);
 
 //ComPresPoly.c prototypes;
 ex void ComputePressureFieldPoly_cpu(void);
@@ -491,7 +496,6 @@ ex void reduction_SUM_gpu (Field *, int, int, int, int);
 ex void reduction_MIN_gpu (Field *, int, int, int, int);
 
 ex void ComputePressureFieldIso_gpu(void);
-ex void Photoevaporation_gpu(real);
 ex void ComputePressureFieldAd_gpu(void);
 ex void ComputePressureFieldPoly_gpu(void);
 

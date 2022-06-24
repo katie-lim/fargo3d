@@ -255,6 +255,11 @@ int zcells;
 int y0cell;
 int z0cell;
 
+
+// Photoevaporation
+real *sigmaDot_cpu;
+
+
 //For checknan
 Field *ListOfGrids = NULL;
 
@@ -291,8 +296,10 @@ Fluid *Fluids[NFLUIDS];
 
 //Pointers to functions
 //WARNING!!! FUNCTIONS' ARGUMENTS MUST NOT CONTAIN BLANK SPACES
-void (*ComputePressureFieldIso)();
+real (*CalcSigmaDot)(real);
+void (*ComputePhotoevaporationRates)();
 void (*Photoevaporation)(real);
+void (*ComputePressureFieldIso)();
 void (*ComputePressureFieldAd)();
 void (*ComputePressureFieldPoly)();
 void (*SubStep1_x)(real);

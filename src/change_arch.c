@@ -19,8 +19,10 @@ void ChangeArch() {
 
   //Function pointers assignment (Default values ==> _cpu)
   //----------------------------------------------------
-  ComputePressureFieldIso = ComputePressureFieldIso_cpu;
+  CalcSigmaDot = CalcSigmaDot_cpu;
+  ComputePhotoevaporationRates = ComputePhotoevaporationRates_cpu;
   Photoevaporation = Photoevaporation_cpu;
+  ComputePressureFieldIso = ComputePressureFieldIso_cpu;
   ComputePressureFieldAd = ComputePressureFieldAd_cpu;
   ComputePressureFieldPoly = ComputePressureFieldPoly_cpu;
   SubStep1_x  = SubStep1_x_cpu;
@@ -155,6 +157,12 @@ void ChangeArch() {
       if (EverythingOnCPU == YES) {
 	fclose (func_arch);
 	return;
+      }
+      if (strcmp(name, "photoevaporation") == 0) {
+	if(strval[0] == 'g') {
+	  Photoevaporation = Photoevaporation_gpu;
+	  printf("Photoevaporation runs on the GPU\n");
+	}
       }
       if (strcmp(name, "computepressurefieldiso") == 0) {
 	if(strval[0] == 'g') {

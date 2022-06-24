@@ -310,7 +310,7 @@ OMEGAFRAME (which is used afterwards to build the initial Vx field. */
 
 
   // Precompute photoevaporation rates
-  computePhotoevaporationRates();
+  ComputePhotoevaporationRates();
 
 
   for (i = begin_i; i<=NTOT; i++) { // MAIN LOOP

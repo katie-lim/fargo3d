@@ -307,7 +307,7 @@ VPATH=${SETUPSDIR}/${SETUP}:${STDDIR}:${SCRIPTSDIR}:${SRCDIR}
 
 #---------------#Sequential and parallel objects----------------------
 MAINOBJ  = LowTasks.o psys.o main.o param.o var.o usage.o   	    \
-	   split.o comm.o CompPresIso.o Photoevaporation.o CompPresPoly.o         	    \
+	   split.o comm.o CompPresIso.o CalcSigmaDot.o Photoevaporation.o CompPresPoly.o         	    \
 	   boundary.o checknans.o 				    \
 	   vanleer_x_a.o vanleer_x_b.o 				    \
            vanleer_y_a.o vanleer_y_b.o				    \
