@@ -22,7 +22,7 @@ TauDamp 0.3
 ### Planet parameters
 
 PlanetConfig		planets/fixed/6j_6j_fixed.cfg
-MassTaper           1777.15
+MassTaper           1256.637
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
@@ -32,12 +32,12 @@ IndirectTerm		Yes
 ### Mesh parameters
 
 Nx			1728		Azimuthal number of zones
-Ny               	768		Radial number of zones
+Ny               	864		Radial number of zones
 Spacing         Logarithmic
 Xmin			-3.14159265358979323844
 Xmax			3.14159265358979323844
-Ymin			0.2		Inner boundary radius
-Ymax			3.0		Outer boundary radius
+Ymin			0.15		Inner boundary radius
+Ymax			3.75		Outer boundary radius
 OmegaFrame     		0		Angular velocity for the frame of reference (If Frame is F).
 Frame			F		Method for moving the frame of reference
 
@@ -45,7 +45,7 @@ Frame			F		Method for moving the frame of reference
 
 DT			0.314159265359	Physical time between fine-grain outputs
 Ninterm	 		200		Number of DTs between scalar fields outputs
-Ntot       11314        Total number of DTs to keep the planets fixed for # 100 initial orbits = 25000 yrs
+Ntot       4000        Total number of DTs to keep the planets fixed for
 TotalNtot			200000		Total number of DTs
 
 OutputDir		@outputs/6j_6j_3s_4a_0pe
