@@ -1,6 +1,6 @@
 # %%
-from utilities import *
-from plot import *
+from analysis.utilities import *
+from analysis.plot import *
 from os.path import exists
 import os
 
@@ -17,7 +17,7 @@ def getResultsTemplate():
     return template
 
 
-def plotResultsForSimulation(setupName):
+def plotResultsForSimulation(setupName, show=True):
     parFile = "setups/fargo/%s.par" % setupName
 
     orbit0 = "outputs/%s/orbit0.dat" % setupName
@@ -29,11 +29,11 @@ def plotResultsForSimulation(setupName):
 
 
     # Plot results
-    plotOrbitalParameter(files, "semiMajorAxis", saveFileName=getPlotSavePath("semi_major_axes", setupName), show=False)
+    plotOrbitalParameter(files, "semiMajorAxis", saveFileName=getPlotSavePath("semi_major_axes", setupName), show=show)
 
-    plotOrbitalParameter(files, "eccentricity", saveFileName=getPlotSavePath("eccentricity", setupName), show=False)
+    plotOrbitalParameter(files, "eccentricity", saveFileName=getPlotSavePath("eccentricity", setupName), show=show)
 
-    plotPeriodRatio(files, saveFileName=getPlotSavePath("period_ratio", setupName), show=False)
+    plotPeriodRatio(files, saveFileName=getPlotSavePath("period_ratio", setupName), show=show)
 
     periodRatio, stdDevPeriodRatio = calcAvgPeriodRatio(files)
 
@@ -42,16 +42,16 @@ def plotResultsForSimulation(setupName):
     if suggestedResonance is not None:
         resonanceName, p, q = suggestedResonance
 
-        plotResonantAnglesVsTime(orbit0, orbit1, p, q, saveFileName=getPlotSavePath("resonant_angles", setupName), show=False)
+        plotResonantAnglesVsTime(orbit0, orbit1, p, q, saveFileName=getPlotSavePath("resonant_angles", setupName), show=show)
 
         suggestedResonance = resonanceName
     else:
         suggestedResonance = ""
 
 
-    plotPolar(lastGasdens, parFile, True, saveFileName=getPlotSavePath("gas_density", setupName), show=False)
+    plotPolar(lastGasdens, parFile, True, saveFileName=getPlotSavePath("gas_density", setupName), show=show)
 
-    plotAzimuthallyAvgedSurfaceDensities([lastGasdens], [parFile], True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), show=False)
+    plotAzimuthallyAvgedSurfaceDensities([lastGasdens], [parFile], True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), show=show)
 
     return (periodRatio, stdDevPeriodRatio, suggestedResonance, orbit0, orbit1)
 
@@ -107,16 +107,16 @@ def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, sugg
 
 
 def processSimulation(setupName):
-    res = plotResultsForSimulation(setupName)
+    res = plotResultsForSimulation(setupName, show=False)
     writeSimulationResultsToFile(setupName, *res)
 
     return
 
 
 # %%
-setupName = "2-jupiter-2.5x-sigma0-0.001-alpha"
+# setupName = "2-jupiter-2.5x-sigma0-0.001-alpha"
 
-res = processSimulation(setupName)
+# res = processSimulation(setupName)
 
 # %%
 def getListOfSimulationOutputs():
@@ -137,5 +137,5 @@ def analyseAllSimulations():
     print("Done.")
     return
 # %%
-analyseAllSimulations()
+# analyseAllSimulations()
 # %%

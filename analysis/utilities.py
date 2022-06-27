@@ -53,7 +53,7 @@ def findLastOutputNumber(setupName):
 
     return max(numbers)
 # %%
-findLastOutputNumber("2-jupiter-2.5x-sigma0-0.001-alpha")
-#%%
-setupName = "2-jupiter-2.5x-sigma0-0.001-alpha"
-files = glob('outputs/%s/gasdens*.dat' % setupName)
+# findLastOutputNumber("2-jupiter-2.5x-sigma0-0.001-alpha")
+# #%%
+# setupName = "2-jupiter-2.5x-sigma0-0.001-alpha"
+# files = glob('outputs/%s/gasdens*.dat' % setupName)

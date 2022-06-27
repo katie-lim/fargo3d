@@ -1,0 +1,13 @@
+#!/bin/sh
+
+#PBS -l walltime=24:00:00
+#PBS -l select=1:ncpus=4:mem=24gb:ngpus=1
+
+cd /rds/general/user/kll119/home/fargo3d
+module load intel-suite/2020.2 cuda/10.1
+
+export CUDA=$CUDA_HOME
+nvidia-smi
+./run.sh {{SETUPNAME}}
+
+module unload intel-suite/2020.2 cuda/10.1

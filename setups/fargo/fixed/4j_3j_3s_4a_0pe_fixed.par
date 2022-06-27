@@ -3,7 +3,7 @@ Setup			fargo
 ### Disk parameters
 
 AspectRatio     	0.05            Thickness over Radius in the disc
-Sigma0			1.9098593171e-03	Surface Density at r=1
+Sigma0			1.3502358974e-03	Surface Density at r=1
 Alpha           1.0e-4
 SigmaSlope		1.0		Slope for the surface density
 FlaringIndex		0.25		Slope for the aspect-ratio

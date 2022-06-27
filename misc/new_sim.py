@@ -54,7 +54,7 @@ def generate_par_file(setupName):
         f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
         placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}")
-        replace = ("%.10e" % (6.3661977237e-4 * surf_dens), alpha, "%.2e" % (4.0e43 * (pe**2)), planet_cfg, setupName)
+        replace = ("%.10e" % (4.5007863248e-04 * surf_dens), alpha, "%.2e" % (4.0e43 * (pe**2)), planet_cfg, setupName)
 
         for line in f1:
             for placeholder, rep in zip(placeholders, replace):

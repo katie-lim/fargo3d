@@ -1,5 +1,5 @@
 # %%
-from units import *
+from analysis.units import *
 import re
 
 import matplotlib.pyplot as plt
@@ -255,7 +255,7 @@ def calcSuggestedResonance(avgPeriodRatio, stdDevPeriodRatio):
     for (p, q) in resonances:
         idealRatio = (p + q)/p
 
-        if (idealRatio - 0.2 < avgPeriodRatio < idealRatio + 0.2):
+        if (idealRatio - 0.12 < avgPeriodRatio < idealRatio + 0.12):
             if stdDevPeriodRatio < 0.1:
                 resonanceName = "%d:%d" % (p + q, p)
                 return (resonanceName, p, q)
