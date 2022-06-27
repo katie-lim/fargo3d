@@ -371,7 +371,7 @@ def plotPolar(fileName, parFile, logRadialSpacing, logScale=False, saveFileName=
     """
 
     # Setup axes
-    fig, ax = plt.subplots(subplot_kw=dict(projection='polar'), figsize=(7,7))
+    fig, ax = plt.subplots(subplot_kw=dict(projection='polar'), figsize=(7,7), dpi=dpi)
 
     # Load and plot the data
     values, rad, azm = loadData(fileName, parFile, logScale, logRadialSpacing=logRadialSpacing)
