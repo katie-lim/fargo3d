@@ -22,7 +22,7 @@ TauDamp 0.3
 ### Planet parameters
 
 PlanetConfig		planets/fixed/5j_3j_fixed.cfg
-MassTaper           1256.637
+MassTaper           628.3185
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
