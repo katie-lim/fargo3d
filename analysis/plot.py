@@ -348,7 +348,7 @@ def plotPolarOnAxes(axes, values, rad, azm, vmin, vmax):
     return cax
 
 
-def plotPolar(fileName, parFile, logRadialSpacing, logScale=False, saveFileName=None, vmin=None, vmax=None, rotate=0, radialCutoff=None, show=True):
+def plotPolar(fileName, parFile, logRadialSpacing, logScale=True, saveFileName=None, vmin=None, vmax=None, rotate=0, radialCutoff=None, show=True):
     """Plots the specified data file in polar coordinates.
 
     Taken and modified from
