@@ -21,14 +21,27 @@ def createJobScript(setupName):
 def getRunningSims():
     qstatOutput = os.popen("qstat").read()
 
-    jobs = re.findall("[0-9]+.pbs[\s]+([\S]+)", qstatOutput)
+    jobIDs = re.findall("([0-9]+).pbs", qstatOutput)
+    jobs = []
+
+    for jobID in jobIDs:
+        jobDetails = os.popen("qstat -f %s" % jobID).read()
+
+        res = re.search("Job_Name = ([\S]+)", jobDetails)
+        jobName = res.groups()[0]
+
+        jobs.append(jobName)
 
     # Remove "jupyterhub" job
-    jobs.remove("jupyterhub")
+    try:
+        jobs.remove("jupyterhub")
+    except:
+        pass
 
     return jobs
 
 
+simsToSubmit = []
 sims = ["2j_2j_2s_3a_0pe",
         "2j_2j_2s_4a_0pe",
         "2j_2j_1s_4a_0pe",
@@ -57,12 +70,15 @@ sims = ["2j_2j_2s_3a_0pe",
 
 runningSims = getRunningSims()
 
+# Ignore simulations already running
 for sim in sims:
-    # Ignore currently running jobs
-    if (sim in runningSims):
-        # print("%s is already running." % sim)
-        continue
+    if not (sim in runningSims):
+        simsToSubmit.append(sim)
 
+print("Submitting simulations:", simsToSubmit)
+ans = input("Continue? (Y/N)")
+
+for sim in simsToSubmit:
     createJobScript(sim)
     os.system("qsub %s" % sim)
 
