@@ -76,10 +76,11 @@ for sim in sims:
         simsToSubmit.append(sim)
 
 print("Submitting simulations:", simsToSubmit)
-ans = input("Continue? (Y/N)")
+ans = input("Continue? (Y/N):")
 
-for sim in simsToSubmit:
-    createJobScript(sim)
-    os.system("qsub %s" % sim)
+if ans.capitalize() == "Y":
+    for sim in simsToSubmit:
+        createJobScript(sim)
+        os.system("qsub %s" % sim)
 
 # %%
