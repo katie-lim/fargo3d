@@ -1,11 +1,12 @@
 # %%
 from analysis.units import *
+from analysis.utilities import findLastOutputNumber
 import re
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy import integrate
 # from matplotlib.collections import LineCollection
-# from scipy import integrate
 # from pathlib import Path
 
 # %%
@@ -445,3 +446,68 @@ def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, 
     showFigure(show)
 
 
+def plotMassOfDisk(setupName, parFile, logRadialSpacing, useRealUnits=False, saveFileName=None, show=True):
+
+    lastOutputNo = findLastOutputNumber(setupName)
+    mass = []
+
+    for i in range(lastOutputNo+1):
+        fileName = "outputs/%s/gasdens%d.dat" % (setupName, i)
+
+        m = integrateDensity(fileName, parFile, logRadialSpacing, useRealUnits=useRealUnits)
+        mass.append(m)
+
+
+    # Calculate the times corresponding to each output
+    dt, Ninterm = getParameters(["DT", "Ninterm"], parFile)
+
+    indices = list(range(lastOutputNo+1))
+    time = [i * dt * Ninterm for i in indices] # the time in scale-free units
+    time = convertToRealTime(np.array(time)) # convert to real units
+
+
+    # Plot results
+    plt.figure(dpi=dpi)
+    plt.plot(time, mass)
+    plt.xlabel("t [%s]" % unit_of_time)
+    plt.ylabel("disk mass [$M_*$]")
+
+    if saveFileName: plt.savefig(saveFileName, dpi=dpi)
+    showFigure(show)
+
+
+
+def integrateDensity(fileName, parFile, logRadialSpacing, useRealUnits=False, ri=0, rf=None):
+    """Integrate the surface density of the disk over area, returning the mass of the disk within the specified radial region.
+
+    Args:
+        fileName (str): The path to the gasdens.dat file.
+        parFile (str): The path to the .par file used.
+        logRadialSpacing (bool): Whether the radial spacing is linear or logarithmic.
+        useRealUnits (bool, optional): Whether to return the mass in real units. Defaults to False.
+        ri (int, optional): The index of the radial coordinate to use as the lower limit of integration. Defaults to 0 (the inner boundary of the disk).
+        rf (int, optional): The index of the radial coordinate to use as the upper limit of integration. Defaults to None (the outer boundary of the disk).
+
+    Returns:
+        The mass of the disk within the specified radial region.
+    """
+    # Load the data
+    sigma, rad, azm = loadData(fileName, parFile, False, useRealUnits=False, logRadialSpacing=logRadialSpacing)
+
+    if useRealUnits:
+        rad *= R0_in_m
+        sigma *= density_scale_factor
+
+    integrand = sigma.transpose() # make the radial coordinate r the first index
+
+    # Limit to the specified radial region
+    integrand = integrand[ri:rf]
+    rad = rad[ri:rf]
+
+    for i in range(np.size(rad)):
+        integrand[i] *= rad[i] # give the integrand the proper form: \int \Sigma r dr d\theta
+
+
+    result = integrate.simps(integrate.simps(integrand, azm), rad)
+
+    return result
