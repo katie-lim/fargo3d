@@ -11,7 +11,7 @@ photoevaporation: 0
 
 notes::
 semi_major_axes_plot:: ![[semi_major_axes_1j_1j_1s_4a_0pe.png]]
-period_ratio:: 2.81 ± 0.01
+period_ratio:: 2.79 ± 0.01
 period_ratio_plot:: ![[period_ratio_1j_1j_1s_4a_0pe.png]]
 suggested_resonance:: 
 resonant_angles_plot:: ![[resonant_angles_1j_1j_1s_4a_0pe.png]]
