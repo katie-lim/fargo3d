@@ -9,7 +9,6 @@ SigmaSlope		0.0		Slope for the surface density
 FlaringIndex		0.0		Slope for the aspect-ratio
 
 Phi                 0.0
-PhotoevaporationStartTime   0.0
 
 # Radial range for damping (in period-ratios). Values smaller than one
 # prevent damping.

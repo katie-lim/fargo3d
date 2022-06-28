@@ -26,7 +26,6 @@ void Photoevaporation_cpu (real dt) {
   int size_y = Ny+2*NGHY;
   int size_z = Nz+2*NGHZ;
   real* sigmaDotInternalPtr = sigmaDot_cpu;
-  real physicalTime = PhysicalTime;
 //<\EXTERNAL>
 
 //<INTERNAL>
@@ -36,11 +35,10 @@ void Photoevaporation_cpu (real dt) {
   int ll;
   real floor = 1E-15;
 //<\INTERNAL>
-    
+
 //<CONSTANT>
 // real ymin(Ny+2*NGHY+1);
 // real zmin(Nz+2*NGHZ+1);
-// real photoevaporationStartTime = PHOTOEVAPORATIONSTARTTIME(1);
 //<CONSTANT>
 
 //<MAIN_LOOP>
@@ -58,16 +56,12 @@ void Photoevaporation_cpu (real dt) {
 #endif
 //<#>
 
-  if (physicalTime >= photoevaporationStartTime) {
-
     ll = l;
     dens[ll] -= sigmaDotInternalPtr[j] * dt;
 
     if (dens[ll] < floor) {
       dens[ll] = floor;
     }
-
-  }
 
 
 //<\#>
