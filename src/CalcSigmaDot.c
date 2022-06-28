@@ -7,7 +7,7 @@ real CalcSigmaDot_cpu(real R) {
     const real R0_in_m = 20*1.496E11;
     const real Mstar_in_kg = 1.989E30;
     const real g = 6.674E-11;
-    const real cs_in_m_per_s = 15E3;
+    const real cs_in_m_per_s = 10E3;
     const real time_unit_in_s = pow(R0_in_m, 1.5)/pow(g * Mstar_in_kg, 0.5);
 
     // Constants

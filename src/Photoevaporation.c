@@ -50,6 +50,8 @@ void Photoevaporation_cpu (real dt) {
 #endif
 #ifdef Y
     for (j=0; j<size_y; j++) {
+    // Debugging
+    printf("j = %d, R = %.3e, sigmaDot = %.3e", j, ymed(j), sigmaDotInternalPtr[j])
 #endif
 #ifdef X
       for (i=0; i<size_x; i++ ) {
