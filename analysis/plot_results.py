@@ -58,9 +58,9 @@ def plotResultsForSimulation(setupName, show=True):
 
 def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, suggestedResonance, orbit0, orbit1):
 
-    # sim: Simulation = getSimulationFromLabel(setupName)
-    # simulationParams = sim.keys()
-    # simulationParamValues = sim.values()
+    sim: Simulation = getSimulationFromLabel(setupName)
+    simulationParams = sim.keys()
+    simulationParamValues = sim.values()
 
     e1 = getEccentricity(orbit0)
     e2 = getEccentricity(orbit1)
@@ -79,9 +79,9 @@ def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, sugg
 
 
         # Add simulation parameters
-        # for (param, value) in zip(simulationParams, simulationParamValues):
-        #     if line.startswith("%s:" % param):
-        #         return "%s: %s" % (param, value)
+        for (param, value) in zip(simulationParams, simulationParamValues):
+            if line.startswith("%s:" % param):
+                return "%s: %s" % (param, value)
 
 
         return line.rstrip()
