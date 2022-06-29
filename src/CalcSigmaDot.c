@@ -40,15 +40,15 @@ void ComputePhotoevaporationRates_cpu() {
     printf("Phi = %.3e photons/s \n", PHI);
 
     int size_y = Ny+2*NGHY;
-    sigmaDot = (real *) malloc(sizeof(real) * size_y);
+    sigmaDot_cpu = (real *) malloc(sizeof(real) * size_y);
 
 
     int j = 0;
     for (j=0; j<size_y; j++) {
         real R = ymed(j);
 
-        sigmaDot[j] = CalcSigmaDot_cpu(R);
-        printf("R = %.3f, sigmaDot = %.3e \n", R, sigmaDot[j]);
+        sigmaDot_cpu[j] = CalcSigmaDot_cpu(R);
+        printf("R = %.3f, sigmaDot = %.3e \n", R, sigmaDot_cpu[j]);
 
     }
 }
