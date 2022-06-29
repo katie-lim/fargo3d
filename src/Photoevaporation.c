@@ -25,7 +25,7 @@ void Photoevaporation_cpu (real dt) {
   int size_x = Nx+2*NGHX;
   int size_y = Ny+2*NGHY;
   int size_z = Nz+2*NGHZ;
-  real* sigmaDotInternalPtr = sigmaDot_cpu;
+  real* sigmaDotInternalPtr = sigmaDot;
 //<\EXTERNAL>
 
 //<INTERNAL>
