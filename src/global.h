@@ -257,8 +257,7 @@ int z0cell;
 
 
 // Photoevaporation
-real *sigmaDot_cpu;
-real *sigmaDot_gpu;
+real *sigmaDot;
 
 
 //For checknan
