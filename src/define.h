@@ -95,9 +95,10 @@
 #define VXTEMP 2048L
 #define VYTEMP 4096L
 #define VZTEMP 8192L
+#define SIGMADOT 16384L
 
 /////////////////////////////////////////////////////
-//Definitions relative to Fine Grain Monitoring 
+//Definitions relative to Fine Grain Monitoring
 #define MONITORSCALAR (MONITOR_SCALAR+0)
 #define MONITOR2D     (MONITOR_2D+0)
 #define MONITORY      (MONITOR_Y+0)
@@ -500,7 +501,7 @@ the first call of the function to be debugged. If your initial
 conditions are too symmetric or regular, you may miss a bug and have
 false-negatives. It is therefore advised that you introduce some noise
 in the initial conditions of the setup that is used to run the code in
-this debugging mode. There is a variable NOISE that defaults to 0. 
+this debugging mode. There is a variable NOISE that defaults to 0.
 */
 
 /* The fields produced by the CPU function are all written in files

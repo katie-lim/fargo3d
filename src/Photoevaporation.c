@@ -10,6 +10,7 @@
 void Photoevaporation_cpu (real dt) {
 
 //<USER_DEFINED>
+  INPUT(sigmaDot);
   INPUT(Density);
   OUTPUT(Density);
 //<\USER_DEFINED>
@@ -17,6 +18,7 @@ void Photoevaporation_cpu (real dt) {
 
 //<EXTERNAL>
   real* dens = Density->field_cpu;
+  real* sdot = sigmaDot->field_cpu;
   int pitch  = Pitch_cpu;
   int stride = Stride_cpu;
   int size_x = Nx+2*NGHX;
@@ -34,7 +36,6 @@ void Photoevaporation_cpu (real dt) {
 
 //<CONSTANT>
 // real ymin(Ny+2*NGHY+1);
-// real sigmaDot(Ny+2*NGHY);
 // real zmin(Nz+2*NGHZ+1);
 //<CONSTANT>
 
@@ -48,7 +49,7 @@ void Photoevaporation_cpu (real dt) {
 #ifdef Y
     for (j=0; j<size_y; j++) {
     // Debugging
-    printf("j = %d, R = %.3e, sigmaDot = %.3e", j, ymed(j), sigmaDot[j]);
+    printf("j = %d, R = %.3e, sigmaDot = %.3e", j, ymed(j), sdot[j]);
 #endif
 #ifdef X
       for (i=0; i<size_x; i++ ) {
@@ -56,7 +57,7 @@ void Photoevaporation_cpu (real dt) {
 //<#>
 
     ll = l;
-    dens[ll] -= sigmaDot[j] * dt;
+    dens[ll] -= sdot[j] * dt;
 
     if (dens[ll] < floor) {
       dens[ll] = floor;

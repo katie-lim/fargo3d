@@ -39,21 +39,31 @@ void ComputePhotoevaporationRates_cpu() {
     // Computes and stores the value of sigmaDot at each radius
     printf("Phi = %.3e photons/s \n", PHI);
 
+    int pitch  = Pitch_cpu;
+    int stride = Stride_cpu;
+    int size_x = Nx+2*NGHX;
     int size_y = Ny+2*NGHY;
-    sigmaDot_cpu = (real *) malloc(sizeof(real) * size_y);
+    int i;
+    int j;
+    int k;
+    int ll;
+    real R;
+    real sigmaDotVal;
 
-    int j = 0;
+    i, j, k = 0;
+
     for (j=0; j<size_y; j++) {
-        real R = ymed(j);
+        R = ymed(j);
+        sigmaDotVal = CalcSigmaDot_cpu(R);
+        printf("R = %.3f, sigmaDot = %.3e \n", R, sigmaDotVal);
 
-        sigmaDot_cpu[j] = CalcSigmaDot_cpu(R);
-        printf("R = %.3f, sigmaDot = %.3e \n", R, sigmaDot_cpu[j]);
+        for (i=0; i<size_x; i++) {
+            ll = l;
+            sigmaDot[ll] = sigmaDotVal;
+        }
 
     }
 
-#ifdef GPU
-    DevMalloc(&sigmaDot_gpu,sizeof(real)*(Ny+2*NGHY));
-    DevMemcpyH2D(sigmaDot_gpu, sigmaDot_cpu, sizeof(real)*(Ny+2*NGHY));
-#endif
+    Host2Dev3D(sigmaDot);
 
 }
