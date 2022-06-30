@@ -10,22 +10,18 @@
 void Photoevaporation_cpu (real dt) {
 
 //<USER_DEFINED>
-  INPUT(Energy);
   INPUT(Density);
-  OUTPUT(Pressure);
+  OUTPUT(Density);
 //<\USER_DEFINED>
 
 
 //<EXTERNAL>
   real* dens = Density->field_cpu;
-  real* cs   = Energy->field_cpu;
-  real* pres = Pressure->field_cpu;
   int pitch  = Pitch_cpu;
   int stride = Stride_cpu;
   int size_x = Nx+2*NGHX;
   int size_y = Ny+2*NGHY;
   int size_z = Nz+2*NGHZ;
-  real* sigmaDot = sigmaDot_cpu;
 //<\EXTERNAL>
 
 //<INTERNAL>
@@ -38,6 +34,7 @@ void Photoevaporation_cpu (real dt) {
 
 //<CONSTANT>
 // real ymin(Ny+2*NGHY+1);
+// real sigmaDot(Ny+2*NGHY);
 // real zmin(Nz+2*NGHZ+1);
 //<CONSTANT>
 

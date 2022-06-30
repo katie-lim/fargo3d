@@ -412,7 +412,13 @@ OMEGAFRAME (which is used afterwards to build the initial Vx field. */
 
       MULTIFLUID(Transport(dt));
 
+
+      real initDens = Density->field_cpu[0];
+
       Photoevaporation(dt);
+
+      real finalDens = Density->field_cpu[0];
+      printf("%.3e\n", ((finalDens - initDens)/dt));
 
       PhysicalTime+=dt;
       Timestepcount++;

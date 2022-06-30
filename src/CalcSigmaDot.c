@@ -42,10 +42,6 @@ void ComputePhotoevaporationRates_cpu() {
     int size_y = Ny+2*NGHY;
     sigmaDot_cpu = (real *) malloc(sizeof(real) * size_y);
 
-#ifdef GPU
-    DevMalloc(&sigmaDot_gpu,sizeof(real)*(Ny+2*NGHY));
-#endif
-
     int j = 0;
     for (j=0; j<size_y; j++) {
         real R = ymed(j);
@@ -54,4 +50,10 @@ void ComputePhotoevaporationRates_cpu() {
         printf("R = %.3f, sigmaDot = %.3e \n", R, sigmaDot_cpu[j]);
 
     }
+
+#ifdef GPU
+    DevMalloc(&sigmaDot_gpu,sizeof(real)*(Ny+2*NGHY));
+    DevMemcpyH2D(sigmaDot_gpu, sigmaDot_cpu, sizeof(real)*(Ny+2*NGHY));
+#endif
+
 }
