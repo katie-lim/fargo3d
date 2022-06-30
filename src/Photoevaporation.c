@@ -25,7 +25,7 @@ void Photoevaporation_cpu (real dt) {
   int size_x = Nx+2*NGHX;
   int size_y = Ny+2*NGHY;
   int size_z = Nz+2*NGHZ;
-  real* sigmaDotInternalPtr = sigmaDot_cpu;
+  real* sigmaDot = sigmaDot_cpu;
 //<\EXTERNAL>
 
 //<INTERNAL>
@@ -51,7 +51,7 @@ void Photoevaporation_cpu (real dt) {
 #ifdef Y
     for (j=0; j<size_y; j++) {
     // Debugging
-    printf("j = %d, R = %.3e, sigmaDot = %.3e", j, ymed(j), sigmaDotInternalPtr[j]);
+    printf("j = %d, R = %.3e, sigmaDot = %.3e", j, ymed(j), sigmaDot[j]);
 #endif
 #ifdef X
       for (i=0; i<size_x; i++ ) {
@@ -59,7 +59,7 @@ void Photoevaporation_cpu (real dt) {
 //<#>
 
     ll = l;
-    dens[ll] -= sigmaDotInternalPtr[j] * dt;
+    dens[ll] -= sigmaDot[j] * dt;
 
     if (dens[ll] < floor) {
       dens[ll] = floor;
