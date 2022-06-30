@@ -2,18 +2,18 @@
 status:
 started_at:
 finishes_at:
-m1: 5.0
-m2: 3.0
+m1: 5
+m2: 3
 sigma: 4
 alpha: 4
 photoevaporation: 0
 ---
 
-notes::
+notes:: planets get flung apart
 semi_major_axes_plot:: ![[semi_major_axes_5j_3j_4s_4a_0pe.png]]
 period_ratio:: 5.76 ± 1.24
 period_ratio_plot:: ![[period_ratio_5j_3j_4s_4a_0pe.png]]
-suggested_resonance:: 
+suggested_resonance::
 resonant_angles_plot:: ![[resonant_angles_5j_3j_4s_4a_0pe.png]]
 eccentricity_plot:: ![[eccentricity_5j_3j_4s_4a_0pe.png]]
 e1:: 0.156

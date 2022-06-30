@@ -9,7 +9,7 @@ alpha: 4
 photoevaporation: 0
 ---
 
-notes::
+notes:: 2:1 resonance. Both eccentricities excited? Resonant angles don't librate about 0/180
 semi_major_axes_plot:: ![[semi_major_axes_4j_3j_3s_4a_0pe.png]]
 period_ratio:: 2.02 ± 0.05
 period_ratio_plot:: ![[period_ratio_4j_3j_3s_4a_0pe.png]]
