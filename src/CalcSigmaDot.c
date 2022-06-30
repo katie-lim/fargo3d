@@ -42,9 +42,9 @@ void ComputePhotoevaporationRates_cpu() {
     int size_y = Ny+2*NGHY;
     sigmaDot_cpu = (real *) malloc(sizeof(real) * size_y);
 
-#IFDEF GPU
+#ifdef GPU
     DevMalloc(&sigmaDot_gpu,sizeof(real)*(Ny+2*NGHY));
-#ENDIF
+#endif
 
     int j = 0;
     for (j=0; j<size_y; j++) {
