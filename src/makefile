@@ -133,7 +133,7 @@ PARACC_LINUX  = mpicc
 LIBS_LINUX    = -lm
 INC_LINUX     =
 NVCC_LINUX    = nvcc
-CUDAOPT_LINUX = -O3 -w #-arch=sm_XX # try utils/cuda/get_cuda_sm.sh
+CUDAOPT_LINUX = -arch compute_20 printf.cu #-arch=sm_XX # try utils/cuda/get_cuda_sm.sh
 PARAINC_LINUX =
 PARALIB_LINUX =
 CUDAINC_LINUX = -I${CUDA}/include/
