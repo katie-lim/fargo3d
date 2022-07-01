@@ -57,7 +57,7 @@ void Photoevaporation_cpu (real dt) {
 //<#>
 
     ll = l;
-    dens[ll] -= sdot[j] * dt;
+    dens[ll] -= sdot[ll] * dt;
 
     if (dens[ll] < floor) {
       dens[ll] = floor;

@@ -59,7 +59,7 @@ void ComputePhotoevaporationRates_cpu() {
 
         for (i=0; i<size_x; i++) {
             ll = l;
-            sigmaDot[ll] = sigmaDotVal;
+            sigmaDot->field_cpu[ll] = sigmaDotVal;
         }
 
     }
