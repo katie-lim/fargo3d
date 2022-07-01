@@ -1,5 +1,5 @@
 #ifdef __GPU
-#define ex extern "C" 
+#define ex extern "C"
 #else
 #define ex extern
 #endif
@@ -247,9 +247,9 @@ ex void SubStep3_cpu(real);
 
 //transport Prototypes
 ex void VanLeerX(Field*, Field*, Field*, real);
-ex void TransportX(Field*, Field*, Field*, real); 
-ex void TransportY(Field*, Field*, real); 
-ex void TransportZ(Field*, Field*, real); 
+ex void TransportX(Field*, Field*, Field*, real);
+ex void TransportY(Field*, Field*, real);
+ex void TransportZ(Field*, Field*, real);
 ex void X_advection (Field*, real);
 ex void transport(real);
 
@@ -365,7 +365,7 @@ ex void _LorentzForce_cpu(real, int, int, int, int, int, int, int, int, int, int
 ex void UpdateMagneticField (real, int, int, int);
 ex void _UpdateMagneticField_cpu(real,int,int,int,int,int,int,int,int,int,
 			      Field*,Field*,Field*);
-  
+
 
 ex void ComputeMHD (real);
 ex void ComputeDivergence (Field *, Field *, Field *);
@@ -638,6 +638,7 @@ ex void Collisions(real,int);
 ex void (_collisions_cpu)(real,int,int,int,int);
 
 ex void ComputeTotalDensity_cpu(void);
+ex void ComputePhotoevapRates_cpu(void);
 ex void Floor_cpu(void);
 
 

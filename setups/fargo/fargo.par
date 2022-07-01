@@ -7,6 +7,7 @@ Sigma0			6.3661977237e-4	Surface Density at r=1
 Alpha			1.0e-5
 SigmaSlope		0.0		Slope for the surface density
 FlaringIndex		0.0		Slope for the aspect-ratio
+Phi             1.0e43
 
 # Radial range for damping (in period-ratios). Values smaller than one
 # prevent damping.
@@ -20,7 +21,7 @@ TauDamp 0.3
 
 ### Planet parameters
 
-PlanetConfig		planets/jupiter.cfg
+PlanetConfig		planets/1j_1j.cfg
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
@@ -29,8 +30,8 @@ IndirectTerm		Yes
 
 ### Mesh parameters
 
-Nx			384		Azimuthal number of zones
-Ny               	128		Radial number of zones
+Nx			50		Azimuthal number of zones
+Ny               	25		Radial number of zones
 Xmin			-3.14159265358979323844
 Xmax			3.14159265358979323844
 Ymin			0.4		Inner boundary radius
