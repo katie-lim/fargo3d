@@ -3,6 +3,37 @@ from analysis.utilities import *
 from analysis.plot import *
 from os.path import exists
 import os
+import re
+
+
+runningJobs = []
+queuedJobs = []
+
+
+def getRunningSims():
+    qstatOutput = os.popen("qstat").read()
+    jobIDs = re.findall("([0-9]+).pbs", qstatOutput)
+
+    for jobID in jobIDs:
+        jobDetails = os.popen("qstat -f %s" % jobID).read()
+
+        res = re.search("Job_Name = ([\S]+)", jobDetails)
+        jobName = res.groups()[0]
+
+        if jobName == "jupyterhub":
+            continue
+            
+        res2 = re.search("job_state = ([\S]+)", jobDetails)
+        state = res2.groups()[0]
+        
+        if state == "R":
+            runningJobs.append(jobName)
+        elif state == "Q":
+            queuedJobs.append(jobName)
+
+    return
+
+getRunningSims();
 
 
 def getPlotSavePath(plotName, setupName):
@@ -59,8 +90,20 @@ def plotResultsForSimulation(setupName, show=True):
 def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, suggestedResonance, orbit0, orbit1):
 
     sim: Simulation = getSimulationFromLabel(setupName)
-    simulationParams = sim.keys()
-    simulationParamValues = sim.values()
+    simulationParams = list(sim.keys())
+    simulationParamValues = list(sim.values())
+    
+    # Add other metadata
+    status = "Not running"
+    
+    if (setupName in runningJobs):
+        status = "Running"
+    elif (setupName in queuedJobs):
+        status = "Queuing"
+        
+    simulationParams.append("status")
+    simulationParamValues.append(status)
+    
 
     e1 = getEccentricity(orbit0)
     e2 = getEccentricity(orbit1)
