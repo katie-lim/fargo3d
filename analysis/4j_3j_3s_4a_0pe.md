@@ -11,12 +11,12 @@ photoevaporation: 0
 
 notes:: 2:1 resonance. Both eccentricities excited? Resonant angles don't librate about 0/180
 semi_major_axes_plot:: ![[semi_major_axes_4j_3j_3s_4a_0pe.png]]
-period_ratio:: 2.02 ± 0.05
+period_ratio:: 2.02 ± 0.04
 period_ratio_plot:: ![[period_ratio_4j_3j_3s_4a_0pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_4j_3j_3s_4a_0pe.png]]
 eccentricity_plot:: ![[eccentricity_4j_3j_3s_4a_0pe.png]]
-e1:: 0.161
-e2:: 0.205
+e1:: 0.155
+e2:: 0.149
 gas_density_plot:: ![[gas_density_4j_3j_3s_4a_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_4j_3j_3s_4a_0pe.png]]
