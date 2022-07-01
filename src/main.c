@@ -411,10 +411,12 @@ OMEGAFRAME (which is used afterwards to build the initial Vx field. */
 
 
 
-      printf("SigmaDot[726] = %.3e\n", SigmaDot->field_cpu[726]);
-      printf("SigmaDot[739] = %.3e\n", SigmaDot->field_cpu[739]);
-      printf("SigmaDot[985] = %.3e\n", SigmaDot->field_cpu[985]);
-      printf("SigmaDot[994] = %.3e\n", SigmaDot->field_cpu[994]);
+      // printf("SigmaDot[726] = %.3e\n", SigmaDot->field_cpu[726]);
+      // printf("SigmaDot[739] = %.3e\n", SigmaDot->field_cpu[739]);
+      // printf("SigmaDot[985] = %.3e\n", SigmaDot->field_cpu[985]);
+      // printf("SigmaDot[994] = %.3e\n", SigmaDot->field_cpu[994]);
+
+      FARGO_SAFE(Photoevaporation(dt));
 
 
 

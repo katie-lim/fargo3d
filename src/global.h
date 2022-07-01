@@ -293,6 +293,7 @@ Fluid *Fluids[NFLUIDS];
 //Pointers to functions
 //WARNING!!! FUNCTIONS' ARGUMENTS MUST NOT CONTAIN BLANK SPACES
 void (*ComputePressureFieldIso)();
+void (*Photoevaporation)(real);
 void (*ComputePressureFieldAd)();
 void (*ComputePressureFieldPoly)();
 void (*SubStep1_x)(real);

@@ -10,13 +10,11 @@
 void ComputePhotoevapRates_cpu () {
 
 //<USER_DEFINED>
-  INPUT(Density);
   OUTPUT(SigmaDot);
 //<\USER_DEFINED>
 
 //<EXTERNAL>
-  real* dens = Density->field_cpu;
-  real* totaldens = SigmaDot->field_cpu;
+  real* sdot = SigmaDot->field_cpu;
   int pitch  = Pitch_cpu;
   int stride = Stride_cpu;
   int size_x = Nx;
@@ -78,7 +76,7 @@ void ComputePhotoevapRates_cpu () {
 #endif
 //<#>
 	ll = l;
-	totaldens[ll] = sigmaDotValue;
+	sdot[ll] = sigmaDotValue;
 
   printf("ll=%d, j=%d, R=%.3e, SigmaDot=%.3e\n", ll, j, ymed(j), sigmaDotValue);
 //<\#>
