@@ -1,15 +1,15 @@
 ---
-status:
-started_at:
-finishes_at:
-m1: 3.0
-m2: 6.0
+status: 
+started_at: 
+finishes_at: 
+m1: 3
+m2: 6
 sigma: 3
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: "2:1 resonance, little/no migration"
 semi_major_axes_plot:: ![[semi_major_axes_3j_6j_3s_4a_0pe.png]]
 period_ratio:: 2.04 ± 0.03
 period_ratio_plot:: ![[period_ratio_3j_6j_3s_4a_0pe.png]]

@@ -1,15 +1,15 @@
 ---
-status:
-started_at:
-finishes_at:
-m1: 5.0
-m2: 5.0
+status: 
+started_at: 
+finishes_at: 
+m1: 5
+m2: 5
 sigma: 5
 alpha: 3
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: might need to restart this
 semi_major_axes_plot:: ![[semi_major_axes_5j_5j_5s_3a_0pe.png]]
 period_ratio:: 2.08 ± 0.05
 period_ratio_plot:: ![[period_ratio_5j_5j_5s_3a_0pe.png]]
