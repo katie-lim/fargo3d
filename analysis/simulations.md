@@ -34,9 +34,9 @@ columns:
     position: 2
     options:
       - { label: "Not running", backgroundColor: "hsl(1, 95%, 90%)"}
+      - { label: "Queuing", backgroundColor: "hsl(215,95%,90%)"}
       - { label: "Running", backgroundColor: "hsl(202, 95%, 90%)"}
       - { label: "Finished", backgroundColor: "hsl(136, 95%, 90%)"}
-      - { label: "Queuing", backgroundColor: "hsl(215,95%,90%)"}
     config:
       enable_media_view: true
       media_width: 100
@@ -192,7 +192,7 @@ columns:
       source_data: current_folder
 config:
   enable_show_state: false
-  group_folder_column:
+  group_folder_column: 
   remove_field_when_delete_column: false
   cell_size: compact
   sticky_first_column: true
