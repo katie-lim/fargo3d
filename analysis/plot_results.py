@@ -12,7 +12,7 @@ queuedJobs = []
 
 def getRunningSims():
     qstatOutput = os.popen("qstat").read()
-    jobIDs = re.findall("([0-9]+).pbs", qstatOutput)
+    jobIDs = re.findall("([0-9][0-9][0-9][0-9][0-9][0-9][0-9])", qstatOutput)
 
     for jobID in jobIDs:
         jobDetails = os.popen("qstat -f %s" % jobID).read()
