@@ -1,5 +1,5 @@
 ---
-status: Queuing
+status: Not running
 started_at:
 finishes_at:
 m1: 5.0
