@@ -162,6 +162,7 @@ void ChangeArch() {
 	  ComputePressureFieldIso = ComputePressureFieldIso_gpu;
 	  printf("CompPressFieldIso runs on the GPU\n");
 	}
+      }
       if (strcmp(name, "photoevaporation") == 0) {
 	if(strval[0] == 'g') {
 	  Photoevaporation = Photoevaporation_gpu;
