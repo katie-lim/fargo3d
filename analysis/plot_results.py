@@ -33,7 +33,7 @@ def getRunningSims():
 
     return
 
-getRunningSims();
+getRunningSims()
 
 
 def getPlotSavePath(plotName, setupName):
