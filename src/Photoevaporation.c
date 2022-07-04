@@ -31,6 +31,7 @@ void Photoevaporation_cpu (real dt) {
   int j;
   int k;
   int ll;
+  real floor = 1e-14;
 //<\INTERNAL>
 
 //<MAIN_LOOP>
@@ -49,6 +50,10 @@ void Photoevaporation_cpu (real dt) {
 //<#>
 	ll = l;
 	dens[ll] -= sdot[ll] * dt;
+
+  if (dens[ll] < floor) {
+    dens[ll] = floor;
+  }
 //<\#>
 #ifdef X
       }
