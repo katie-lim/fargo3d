@@ -1,15 +1,15 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 1.0
-m2: 1.0
+started_at: 
+finishes_at: 
+m1: 1
+m2: 1
 sigma: 2
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: planets have a close encounter
 semi_major_axes_plot:: ![[semi_major_axes_1j_1j_2s_4a_0pe.png]]
 period_ratio:: 2.83 ± 0.81
 period_ratio_plot:: ![[period_ratio_1j_1j_2s_4a_0pe.png]]

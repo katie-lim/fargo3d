@@ -1,15 +1,15 @@
 ---
 status: Queuing
-started_at:
-finishes_at:
-m1: 8.0
-m2: 8.0
+started_at: 
+finishes_at: 
+m1: 8
+m2: 8
 sigma: 8
 alpha: 3
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes:: restarting
+notes:: planets get flung apart
 semi_major_axes_plot:: ![[semi_major_axes_8j_8j_8s_3a_0pe.png]]
 period_ratio:: 3.67 ± 0.22
 period_ratio_plot:: ![[period_ratio_8j_8j_8s_3a_0pe.png]]

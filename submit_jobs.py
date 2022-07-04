@@ -21,7 +21,7 @@ def createJobScript(setupName):
 def getRunningSims():
     qstatOutput = os.popen("qstat").read()
 
-    jobIDs = re.findall("([0-9]+).pbs", qstatOutput)
+    jobIDs = re.findall("([0-9][0-9][0-9][0-9][0-9][0-9][0-9])", qstatOutput)
     jobs = []
 
     for jobID in jobIDs:
@@ -47,7 +47,7 @@ sims = ["2j_2j_2s_3a_0pe",
         "2j_2j_1s_4a_0pe",
         "1j_1j_1s_3a_0pe",
         "1j_1j_1s_4a_0pe",
-        "1j_1j_2s_4a_0pe",
+        # "1j_1j_2s_4a_0pe",
         "3j_3j_3s_3a_0pe",
         "3j_3j_3s_4a_0pe",
         "3j_3j_5s_4a_0pe",
