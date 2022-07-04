@@ -34,7 +34,7 @@ columns:
     position: 2
     options:
       - { label: "Not running", backgroundColor: "hsl(1, 95%, 90%)"}
-      - { label: "Queuing", backgroundColor: "hsl(215,95%,90%)"}
+      - { label: "Queuing", backgroundColor: "hsl(243.67346938775506,96.07843137254903%,90%)"}
       - { label: "Running", backgroundColor: "hsl(202, 95%, 90%)"}
       - { label: "Finished", backgroundColor: "hsl(136, 95%, 90%)"}
     config:
@@ -42,18 +42,6 @@ columns:
       media_width: 100
       media_height: 100
       isInline: false
-  finishes_at:
-    input: calendar_time
-    accessor: finishes_at
-    key: finishes_at
-    label: finishes at
-    position: 4
-    config:
-      enable_media_view: true
-      media_width: 100
-      media_height: 100
-      isInline: false
-      source_data: current_folder
   period_ratio:
     input: text
     accessor: period_ratio
@@ -189,6 +177,20 @@ columns:
       media_width: 100
       media_height: 100
       isInline: true
+      source_data: current_folder
+  tags:
+    input: tags
+    accessor: tags
+    key: tags
+    label: tags
+    position: 4
+    options:
+      - { label: "photoevaporation", backgroundColor: "hsl(154.861876021984,95.00000000000011%,90%)"}
+    config:
+      enable_media_view: true
+      media_width: 100
+      media_height: 100
+      isInline: false
       source_data: current_folder
 config:
   enable_show_state: false

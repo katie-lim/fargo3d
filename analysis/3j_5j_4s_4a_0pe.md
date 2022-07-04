@@ -1,12 +1,14 @@
 ---
 status: Queuing
-started_at:
-finishes_at:
-m1: 3.0
-m2: 5.0
+started_at: 
+finishes_at: 
+m1: 3
+m2: 5
 sigma: 4
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
+tags:
+ - photoevaporation
 ---
 
 notes:: "2:1 resonance, inwards migration, eccentricities rising"

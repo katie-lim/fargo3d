@@ -1,12 +1,14 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 1.0
-m2: 1.0
+started_at: 
+finishes_at: 
+m1: 1
+m2: 1
 sigma: 1
 alpha: 3
-photoevaporation: 0
+photoevaporation: 
+tags:
+ - photoevaporation
 ---
 
 notes::

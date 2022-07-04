@@ -7,6 +7,8 @@ m2: 6
 sigma: 3
 alpha: 4
 photoevaporation: 
+tags:
+ - photoevaporation
 ---
 
 notes:: "2:1 resonance, no migration, eccentricities flattening out"

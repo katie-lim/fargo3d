@@ -7,6 +7,8 @@ m2: 8
 sigma: 7
 alpha: 4
 photoevaporation: 
+tags:
+ - photoevaporation
 ---
 
 notes:: "2:1 resonance, $e_1$ rising with oscillations"
