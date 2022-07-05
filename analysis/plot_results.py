@@ -82,7 +82,7 @@ def plotResultsForSimulation(setupName, show=True):
 
     plotPolar(lastGasdens, parFile, True, saveFileName=getPlotSavePath("gas_density", setupName), show=show)
 
-    plotAzimuthallyAvgedSurfaceDensities([lastGasdens], [parFile], True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), show=show)
+    plotAzimuthallyAvgedSurfaceDensities([lastGasdens], [parFile], True, logScale=True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), show=show)
 
     return (periodRatio, stdDevPeriodRatio, suggestedResonance, orbit0, orbit1)
 
