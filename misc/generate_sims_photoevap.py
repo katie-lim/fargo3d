@@ -2,11 +2,11 @@
 import re
 import os
 import shutil
-
 import sys
 sys.path.insert(0, os.path.abspath('./'))
-
 import analysis.units
+
+Ninterm = 200
 
 
 sims = [
@@ -34,7 +34,7 @@ for (setupName, photoevapStartTime) in sims:
 
     photoevapCodeUnits = (photoevapStartTime / conversionFactor)
     DTs = photoevapCodeUnits / 0.314159265359
-    outputs = DTs / 100
+    outputs = DTs / Ninterm
     outputNo = round(outputs)
 
     print("= %.3f in code units" % photoevapCodeUnits)
@@ -53,14 +53,15 @@ for (setupName, photoevapStartTime) in sims:
     for file in files:
 
         src = "outputs/%s/%s.dat" % (setupNameNoPe, file)
+        dstFolder = "outputs/%s/" % setupName
         dst = "outputs/%s/%s.dat" % (setupName, file)
 
         try:
-            os.makedirs(dst, exist_ok=True)
+            os.makedirs(dstFolder, exist_ok=True)
             shutil.copy(src, dst)
-        except:
-            print("Failed to copy %s to %s." % (src, dst))
-            pass
+        except Exception as e:
+            print("Failed to copy %s to %s. Error:" % (src, dst))
+            print(e)
 
 
     # Generate .par files for the new simulation with PE
