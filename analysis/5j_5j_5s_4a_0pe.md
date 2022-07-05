@@ -1,15 +1,17 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 5.0
-m2: 5.0
+started_at: 
+finishes_at: 
+m1: 5
+m2: 5
 sigma: 5
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
+tags:
+ - photoevaporation
 ---
 
-notes::
+notes:: "2:1 resonance, eccentricities rising with oscillations"
 semi_major_axes_plot:: ![[semi_major_axes_5j_5j_5s_4a_0pe.png]]
 period_ratio:: 2.02 ± 0.05
 period_ratio_plot:: ![[period_ratio_5j_5j_5s_4a_0pe.png]]
