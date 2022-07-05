@@ -1,12 +1,12 @@
 ---
-status: Queuing
-started_at: 
-finishes_at: 
-m1: 8
-m2: 8
+status: Not running
+started_at:
+finishes_at:
+m1: 8.0
+m2: 8.0
 sigma: 8
 alpha: 3
-photoevaporation: 
+photoevaporation: 0
 ---
 
 notes:: planets get flung apart

@@ -1,12 +1,12 @@
 ---
-status: Queuing
-started_at: 
-finishes_at: 
-m1: 3
-m2: 6
+status: Not running
+started_at:
+finishes_at:
+m1: 3.0
+m2: 6.0
 sigma: 3
 alpha: 4
-photoevaporation: 
+photoevaporation: 0
 tags:
  - photoevaporation
 ---
