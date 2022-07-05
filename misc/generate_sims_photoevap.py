@@ -41,7 +41,6 @@ for (setupName, photoevapStartTime) in sims:
     print("= %.3f DTs" % DTs)
     print("= %.3f scalar field outputs" % outputs)
     print("=> Output #%d" % outputNo)
-    print("")
 
 
     # Copy over result files with no PE
@@ -57,6 +56,7 @@ for (setupName, photoevapStartTime) in sims:
         dst = "outputs/%s/%s.dat" % (setupName, file)
 
         try:
+            os.makedirs(dst, exist_ok=True)
             shutil.copy(src, dst)
         except:
             print("Failed to copy %s to %s." % (src, dst))
@@ -65,6 +65,6 @@ for (setupName, photoevapStartTime) in sims:
 
     # Generate .par files for the new simulation with PE
     os.system("python misc/new_sim.py %s" % setupName)
-
+    print("")
 
 # %%
