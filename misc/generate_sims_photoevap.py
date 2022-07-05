@@ -6,6 +6,7 @@ import sys
 sys.path.insert(0, os.path.abspath('./'))
 import analysis.units
 
+dt = 0.314159265359
 Ninterm = 200
 
 
@@ -33,7 +34,7 @@ for (setupName, photoevapStartTime) in sims:
     print("Start photoevaporation after %d years" % photoevapStartTime)
 
     photoevapCodeUnits = (photoevapStartTime / conversionFactor)
-    DTs = photoevapCodeUnits / 0.314159265359
+    DTs = photoevapCodeUnits / dt
     outputs = DTs / Ninterm
     outputNo = round(outputs)
 
@@ -46,10 +47,10 @@ for (setupName, photoevapStartTime) in sims:
     # Copy over result files with no PE
     outputFileNames = ["gasdens", "gasenergy", "gasvx", "gasvy", "summary"]
     outputFiles = ["%s%d" % (fileName, outputNo) for fileName in outputFileNames]
-    orbitFiles = ["orbit%d" % i for i in [0, 1]]
+    planetFiles = ["planet%d" % i for i in [0, 1]]
 
 
-    files = outputFiles + orbitFiles
+    files = outputFiles + planetFiles
     for file in files:
 
         src = "outputs/%s/%s.dat" % (setupNameNoPe, file)
