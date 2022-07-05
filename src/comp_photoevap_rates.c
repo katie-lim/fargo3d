@@ -78,7 +78,10 @@ void ComputePhotoevapRates_cpu () {
 	ll = l;
 	sdot[ll] = sigmaDotValue;
 
-  printf("ll=%d, j=%d, R=%.3e, SigmaDot=%.3e\n", ll, j, ymed(j), sigmaDotValue);
+#ifdef DEBUG
+        printf("ll=%d, j=%d, R=%.3e, SigmaDot=%.3e\n", ll, j, ymed(j), sigmaDotValue);
+#endif
+
 //<\#>
 #ifdef X
       }
