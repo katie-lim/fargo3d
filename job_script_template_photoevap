@@ -17,6 +17,6 @@ then
     exit 0
 fi
 
-./run.sh {{SETUPNAME}}
+./run_photoevap.sh {{SETUPNAME}}
 
 module unload intel-suite/2020.2 cuda/10.1
