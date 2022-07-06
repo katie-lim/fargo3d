@@ -78,10 +78,6 @@ for (setupName, photoevapStartTime) in sims:
     #     keepFirstNLinesofFile("%s%s.dat" % (setupName, p), outputNo)
 
 
-    # Move the output folder to the fargo3d_photoevap directory
-    os.system("mv outputs/%s ../fargo3d_photoevap/outputs/%s" % (setupName, setupName))
-
-
     # Generate .par files for the new simulation with PE
     os.system("python misc/new_sim.py %s" % setupName)
     print("")

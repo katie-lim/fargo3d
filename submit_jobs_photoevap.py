@@ -9,7 +9,7 @@ def getFileContents(fileName):
     return contents
 
 def createJobScript(setupName):
-    template = getFileContents("job_script_template_photoevap")
+    template = getFileContents("job_script_template")
 
     script = template.replace("{{SETUPNAME}}", setupName)
 
