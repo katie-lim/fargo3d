@@ -308,6 +308,10 @@ OMEGAFRAME (which is used afterwards to build the initial Vx field. */
   masterprint ("Standard version with no ghost zones in X\n");
 #endif
 
+#ifdef PHOTOEVAP
+  MULTIFLUID(ComputePhotoevapRates());
+#endif
+
   for (i = begin_i; i<=NTOT; i++) { // MAIN LOOP
     if (NINTERM * (TimeStep = (i / NINTERM)) == i) {
 
@@ -407,13 +411,15 @@ OMEGAFRAME (which is used afterwards to build the initial Vx field. */
 
       MULTIFLUID(Transport(dt));
 
+
+#ifdef PHOTOEVAP
+      FARGO_SAFE(Photoevaporation(dt));
+#endif
+
+
       PhysicalTime+=dt;
       Timestepcount++;
 
-
-#ifdef PHOTOEVAP
-      printf("Photoevap flag was on!\n");
-#endif
 
 #ifdef STOCKHOLM
       MULTIFLUID(StockholmBoundary(dt));

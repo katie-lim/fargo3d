@@ -12,7 +12,7 @@ void ChangeArch() {
   int i;
 
   func_arch = fopen(FUNCARCHFILE, "r");
-  
+
   if(func_arch == NULL) {
     printf("Error!! %s cannot be opened.\n", FUNCARCHFILE);
   }
@@ -20,6 +20,9 @@ void ChangeArch() {
   //Function pointers assignment (Default values ==> _cpu)
   //----------------------------------------------------
   ComputePressureFieldIso = ComputePressureFieldIso_cpu;
+#ifdef PHOTOEVAP
+  Photoevaporation = Photoevaporation_cpu;
+#endif
   ComputePressureFieldAd = ComputePressureFieldAd_cpu;
   ComputePressureFieldPoly = ComputePressureFieldPoly_cpu;
   SubStep1_x  = SubStep1_x_cpu;
@@ -58,7 +61,7 @@ void ChangeArch() {
   copy_velocities = copy_velocities_cpu;
   _ComputeForce = _ComputeForce_cpu;
   StockholmBoundary = StockholmBoundary_cpu;
-  
+
   visctensor_cart   = visctensor_cart_cpu;
   addviscosity_cart = addviscosity_cart_cpu;
   visctensor_cyl    = visctensor_cyl_cpu;
@@ -100,7 +103,7 @@ void ChangeArch() {
   _UpdateMagneticField  = _UpdateMagneticField_cpu;
   _LorentzForce = _LorentzForce_cpu;
   EMF_Upstream_Integrate = EMF_Upstream_Integrate_cpu;
-  
+
   // CURRENTS (HALL EFFECT + AMBIPOLAR DIFFUSION) ------
   ComputeJx = ComputeJx_cpu;
   ComputeJy = ComputeJy_cpu;
@@ -124,11 +127,14 @@ void ChangeArch() {
   AmbipolarDiffusion_emfz  = AmbipolarDiffusion_emfz_cpu;
   AmbipolarDiffusion_coeff = AmbipolarDiffusion_coeff_cpu;
   // ------------------------------------------------------
-  
+
   _collisions = _collisions_cpu;
   ComputeTotalDensity = ComputeTotalDensity_cpu;
-  Floor = Floor_cpu; 
-  Reset_field = Reset_field_cpu; 
+#ifdef PHOTOEVAP
+  ComputePhotoevapRates = ComputePhotoevapRates_cpu;
+#endif
+  Floor = Floor_cpu;
+  Reset_field = Reset_field_cpu;
   //-----------------------------------------------------
 
   VanLeerX_PPA_a    = VanLeerX_PPA_a_cpu;
@@ -149,7 +155,7 @@ void ChangeArch() {
       for (i = 0; i<strlen(strval); i++){
 	strval[i] = (char)tolower(strval[i]);
       }
-      
+
 #ifdef GPU
       if (EverythingOnCPU == YES) {
 	fclose (func_arch);
@@ -161,6 +167,16 @@ void ChangeArch() {
 	  printf("CompPressFieldIso runs on the GPU\n");
 	}
       }
+
+#ifdef PHOTOEVAP
+      if (strcmp(name, "photoevaporation") == 0) {
+	if(strval[0] == 'g') {
+	  Photoevaporation = Photoevaporation_gpu;
+	  printf("Photoevaporation runs on the GPU\n");
+	}
+      }
+#endif
+
       if (strcmp(name, "computepressurefieldad") == 0) {
 	if(strval[0] == 'g') {
 	  ComputePressureFieldAd = ComputePressureFieldAd_gpu;
@@ -176,7 +192,7 @@ void ChangeArch() {
       if (strcmp(name, "substep1") == 0) {
 	if(strval[0] == 'g') {
 	  SubStep1_x = SubStep1_x_gpu;
-	  SubStep1_y = SubStep1_y_gpu; 
+	  SubStep1_y = SubStep1_y_gpu;
 	  SubStep1_z = SubStep1_z_gpu;
 	  printf("Substep1 runs on the GPU\n");
 	}
@@ -367,7 +383,7 @@ void ChangeArch() {
 	  _OhmicDiffusion_emf = _OhmicDiffusion_emf_gpu;
           printf("OhmicDiffusion_emf runs on the GPU\n");
         }
-      }      
+      }
       if (strcmp(name, "ohmicdiffusioncoeff") == 0) {
         if(strval[0] == 'g'){
           OhmicDiffusion_coeff = OhmicDiffusion_coeff_gpu;
@@ -380,7 +396,7 @@ void ChangeArch() {
           HallEffect_coeff = HallEffect_coeff_gpu;
           printf("HallEffect_coeff runs on the GPU\n");
         }
-      }            
+      }
       if (strcmp(name, "halleffectemfs") == 0) {
         if(strval[0] == 'g'){
           HallEffect_emfx = HallEffect_emfx_gpu;
@@ -418,7 +434,7 @@ void ChangeArch() {
           AmbipolarDiffusion_coeff = AmbipolarDiffusion_coeff_gpu;
           printf("AmbipolarDiffusion_coeff runs on the GPU\n");
         }
-      }      
+      }
       if (strcmp(name, "fargomhd") == 0) {
 	if(strval[0] == 'g'){
 	  EMF_Upstream_Integrate = EMF_Upstream_Integrate_gpu;
@@ -478,7 +494,7 @@ void ChangeArch() {
 #endif
 	}
       }
-      
+
       if (strcmp(name, "boundaries") == 0) {
 	if(strval[0] == 'g'){
 	  #include <../scripts/bound_gpu.code>

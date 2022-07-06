@@ -22,10 +22,10 @@ def getRunningSims():
 
         if jobName == "jupyterhub":
             continue
-            
+
         res2 = re.search("job_state = ([\S]+)", jobDetails)
         state = res2.groups()[0]
-        
+
         if state == "R":
             runningJobs.append(jobName)
         elif state == "Q":
@@ -92,18 +92,18 @@ def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, sugg
     sim: Simulation = getSimulationFromLabel(setupName)
     simulationParams = list(sim.keys())
     simulationParamValues = list(sim.values())
-    
+
     # Add other metadata
     status = "Not running"
-    
+
     if (setupName in runningJobs):
         status = "Running"
     elif (setupName in queuedJobs):
         status = "Queuing"
-        
+
     simulationParams.append("status")
     simulationParamValues.append(status)
-    
+
 
     e1 = getEccentricity(orbit0)
     e2 = getEccentricity(orbit1)
@@ -175,7 +175,10 @@ def analyseAllSimulations():
 
     for setupName in setupNames:
         print("Plotting", setupName)
-        processSimulation(setupName)
+        try:
+            processSimulation(setupName)
+        except Exception as e:
+            print(e)
 
     print("Done.")
     return
