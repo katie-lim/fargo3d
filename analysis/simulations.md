@@ -58,7 +58,7 @@ columns:
     accessor: period_ratio
     key: period_ratio
     label: period ratio
-    position: 7
+    position: 6
     config:
       enable_media_view: true
       media_width: 100
@@ -70,7 +70,7 @@ columns:
     accessor: suggested_resonance
     key: suggested_resonance
     label: suggested resonance
-    position: 9
+    position: 7
     options:
       - { label: "2:1", backgroundColor: "hsl(193.48469578942587,95.00000000000011%,90%)"}
       - { label: "3:2", backgroundColor: "hsl(103, 95%, 90%)"}
@@ -86,7 +86,7 @@ columns:
     accessor: resonant_angles_plot
     key: resonant_angles_plot
     label: resonant angles plot
-    position: 10
+    position: 9
     config:
       enable_media_view: true
       media_width: 100
@@ -110,7 +110,7 @@ columns:
     accessor: eccentricity_plot
     key: eccentricity_plot
     label: eccentricity plot
-    position: 11
+    position: 10
     config:
       enable_media_view: true
       media_width: 100
@@ -122,7 +122,7 @@ columns:
     accessor: gas_density_plot
     key: gas_density_plot
     label: gas density plot
-    position: 14
+    position: 13
     config:
       enable_media_view: true
       media_width: 100
@@ -134,7 +134,7 @@ columns:
     accessor: notes
     key: notes
     label: notes
-    position: 5
+    position: 4
     config:
       enable_media_view: true
       media_width: 100
@@ -146,7 +146,7 @@ columns:
     accessor: e1
     key: e1
     label: e1
-    position: 12
+    position: 11
     config:
       enable_media_view: true
       media_width: 100
@@ -158,7 +158,7 @@ columns:
     accessor: e2
     key: e2
     label: e2
-    position: 13
+    position: 12
     config:
       enable_media_view: true
       media_width: 100
@@ -170,7 +170,7 @@ columns:
     accessor: semi_major_axes_plot
     key: semi_major_axes_plot
     label: semi major axes plot
-    position: 6
+    position: 5
     config:
       enable_media_view: true
       media_width: 100
@@ -182,7 +182,7 @@ columns:
     accessor: azimuthally_avged_surface_density_plot
     key: azimuthally_avged_surface_density_plot
     label: azimuthally avged surface density plot
-    position: 15
+    position: 14
     config:
       enable_media_view: false
       media_width: 100
