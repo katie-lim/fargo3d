@@ -55,14 +55,19 @@ def plotResultsForSimulation(setupName, show=True):
     orbit1 = "outputs/%s/orbit1.dat"% setupName
     files = [orbit0, orbit1]
 
+    photoevap = not ("0pe" in setupName)
+
     lastOutputNumber = findLastOutputNumber(setupName)
     lastGasdens = "outputs/%s/gasdens%d.dat" % (setupName, lastOutputNumber)
 
 
     # Plot results
-    plotOrbitalParameter(files, "semiMajorAxis", saveFileName=getPlotSavePath("semi_major_axes", setupName), show=show)
-
-    plotOrbitalParameter(files, "eccentricity", saveFileName=getPlotSavePath("eccentricity", setupName), show=show)
+    if photoevap:
+        plotOrbitalParameterPE(setupName, "semiMajorAxis", saveFileName=getPlotSavePath("semi_major_axes", setupName), show=show)
+        plotOrbitalParameterPE(setupName, "eccentricity", saveFileName=getPlotSavePath("eccentricity", setupName), show=show)
+    else:
+        plotOrbitalParameter(files, "semiMajorAxis", saveFileName=getPlotSavePath("semi_major_axes", setupName), show=show)
+        plotOrbitalParameter(files, "eccentricity", saveFileName=getPlotSavePath("eccentricity", setupName), show=show)
 
     plotPeriodRatio(files, saveFileName=getPlotSavePath("period_ratio", setupName), show=show)
 

@@ -102,7 +102,8 @@ def loadData(dataFile, parFile, logScale, logRadialSpacing, useRealUnits=True):
 
 
 
-def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True):
+
+def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False):
     """Plots the specified orbital parameter against time for multiple setups.
 
     Args:
@@ -146,6 +147,33 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
     if title: plt.title(title)
     plt.legend()
     plt.gcf().set_size_inches(8, 5)
+
+    if saveFileName: plt.savefig(saveFileName, dpi=dpi)
+
+    if not dontClose:
+        showFigure(show)
+
+
+def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=True):
+    setupNameNoPe = re.sub("[0-9]pe", "0pe", setupName)
+
+    filesInclNoPe = ["outputs/%s/orbit%s.dat" % (setupName, planetNo) for setupName in [setupNameNoPe, setupName] for planetNo in [0, 1]]
+
+    labels = ["Planet 1 (no PE)", "Planet 2 (no PE)", "Planet 1 (with PE)", "Planet 2 (with PE)"]
+
+
+    plotOrbitalParameter(filesInclNoPe, parameterName, labels=labels, show=show, dontClose=True)
+
+    # Add vertical line at time when PE is switched on
+    data = np.loadtxt(filesInclNoPe[2])
+    date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
+    t = convertToRealTime(date[0])
+    y = np.max(eccentricity)
+    plt.vlines(t, 0, y, linestyles="dotted", colors="k")
+    plt.text(t+0.01*convertToRealTime(date[-1]), y/2, "PE begins", rotation=90, verticalalignment="center")
+
+    title = "%s with & without PE" % setupNameNoPe.replace("_0pe", "")
+    plt.title(title)
 
     if saveFileName: plt.savefig(saveFileName, dpi=dpi)
 
