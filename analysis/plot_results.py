@@ -132,7 +132,11 @@ def analyseAllSimulations():
 
     for setupName in setupNames:
         print("Plotting", setupName)
-        processSimulation(setupName)
+
+        try:
+            processSimulation(setupName)
+        except Exception as e:
+            print(e)
 
     print("Done.")
     return
