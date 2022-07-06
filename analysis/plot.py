@@ -155,6 +155,7 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
 
 
 def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=True):
+    parameterName = parameterName.lower()
     setupNameNoPe = re.sub("[0-9]pe", "0pe", setupName)
 
     filesInclNoPe = ["outputs/%s/orbit%s.dat" % (setupName, planetNo) for setupName in [setupNameNoPe, setupName] for planetNo in [0, 1]]
@@ -168,7 +169,11 @@ def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=Tru
     data = np.loadtxt(filesInclNoPe[2])
     date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
     t = convertToRealTime(date[0])
-    y = np.max(eccentricity)
+
+    if (parameterName == "semimajoraxis"):
+        y = np.max(semiMajorAxis)
+    if (parameterName == "eccentricity"):
+        y = np.max(eccentricity)
     plt.vlines(t, 0, y, linestyles="dotted", colors="k")
     plt.text(t+0.01*convertToRealTime(date[-1]), y/2, "PE begins", rotation=90, verticalalignment="center")
 
