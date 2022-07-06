@@ -1,5 +1,5 @@
 ---
-status: Running
+status: Not running
 started_at:
 finishes_at:
 m1: 1.0
@@ -11,7 +11,7 @@ photoevaporation: 0
 
 notes::
 semi_major_axes_plot:: ![[semi_major_axes_1j_1j_1s_2a_0pe.png]]
-period_ratio:: 2.27 ± 0.01
+period_ratio:: 2.28 ± 0.01
 period_ratio_plot:: ![[period_ratio_1j_1j_1s_2a_0pe.png]]
 suggested_resonance:: 
 resonant_angles_plot:: ![[resonant_angles_1j_1j_1s_2a_0pe.png]]
