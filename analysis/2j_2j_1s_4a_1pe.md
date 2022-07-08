@@ -16,7 +16,7 @@ period_ratio_plot:: ![[period_ratio_2j_2j_1s_4a_1pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_2j_2j_1s_4a_1pe.png]]
 eccentricity_plot:: ![[eccentricity_2j_2j_1s_4a_1pe.png]]
-e1:: 0.209
-e2:: 0.091
+e1:: 0.230
+e2:: 0.056
 gas_density_plot:: ![[gas_density_2j_2j_1s_4a_1pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_2j_2j_1s_4a_1pe.png]]
