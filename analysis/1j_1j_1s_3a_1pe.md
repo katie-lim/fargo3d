@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 1.0
-m2: 1.0
+started_at: 
+finishes_at: 
+m1: 1
+m2: 1
 sigma: 1
 alpha: 3
 photoevaporation: 1
 ---
 
-notes::
+notes:: eccentricities beginning to overtake those without PE
 semi_major_axes_plot:: ![[semi_major_axes_1j_1j_1s_3a_1pe.png]]
 period_ratio:: 1.67 ± 0.02
 period_ratio_plot:: ![[period_ratio_1j_1j_1s_3a_1pe.png]]

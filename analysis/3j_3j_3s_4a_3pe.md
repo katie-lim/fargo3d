@@ -1,15 +1,15 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 3.0
-m2: 3.0
+started_at: 
+finishes_at: 
+m1: 3
+m2: 3
 sigma: 3
 alpha: 4
 photoevaporation: 3
 ---
 
-notes::
+notes:: $e_1$ beginning to show runaway growth?
 semi_major_axes_plot:: ![[semi_major_axes_3j_3j_3s_4a_3pe.png]]
 period_ratio:: 2.02 ± 0.03
 period_ratio_plot:: ![[period_ratio_3j_3j_3s_4a_3pe.png]]

@@ -1,17 +1,17 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 3.0
-m2: 6.0
+started_at: 
+finishes_at: 
+m1: 3
+m2: 6
 sigma: 3
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 tags:
  - photoevaporation
 ---
 
-notes:: "2:1 resonance, no migration, eccentricities flattening out"
+notes:: "2:1 resonance, no migration, eccentricities flattening out. Final semi-major axes are greater compared to [[3j_3j_3s_4a_0pe]]"
 semi_major_axes_plot:: ![[semi_major_axes_3j_6j_3s_4a_0pe.png]]
 period_ratio:: 2.03 ± 0.03
 period_ratio_plot:: ![[period_ratio_3j_6j_3s_4a_0pe.png]]

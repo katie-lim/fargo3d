@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 2.0
-m2: 2.0
+started_at: 
+finishes_at: 
+m1: 2
+m2: 2
 sigma: 2
 alpha: 3
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: "doesn't stay in 2:1 resonance"
 semi_major_axes_plot:: ![[semi_major_axes_2j_2j_2s_3a_0pe.png]]
 period_ratio:: 2.23 ± 0.39
 period_ratio_plot:: ![[period_ratio_2j_2j_2s_3a_0pe.png]]

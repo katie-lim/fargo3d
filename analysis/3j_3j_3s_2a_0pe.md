@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 3.0
-m2: 3.0
+started_at: 
+finishes_at: 
+m1: 3
+m2: 3
 sigma: 3
 alpha: 2
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: 
 semi_major_axes_plot:: ![[semi_major_axes_3j_3j_3s_2a_0pe.png]]
 period_ratio:: 2.08 ± 0.07
 period_ratio_plot:: ![[period_ratio_3j_3j_3s_2a_0pe.png]]

@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 1.0
-m2: 1.0
+started_at: 
+finishes_at: 
+m1: 1
+m2: 1
 sigma: 1
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: "initially 2:1 resonance, then period ratio drops"
 semi_major_axes_plot:: ![[semi_major_axes_1j_1j_1s_4a_0pe.png]]
 period_ratio:: 1.77 ± 0.04
 period_ratio_plot:: ![[period_ratio_1j_1j_1s_4a_0pe.png]]

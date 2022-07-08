@@ -1,15 +1,15 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 2.0
-m2: 2.0
+started_at: 
+finishes_at: 
+m1: 2
+m2: 2
 sigma: 1
 alpha: 4
 photoevaporation: 1
 ---
 
-notes::
+notes:: eccentricities similar to those without PE at the moment
 semi_major_axes_plot:: ![[semi_major_axes_2j_2j_1s_4a_1pe.png]]
 period_ratio:: 2.01 ± 0.02
 period_ratio_plot:: ![[period_ratio_2j_2j_1s_4a_1pe.png]]
