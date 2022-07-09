@@ -1,17 +1,17 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 3.0
-m2: 5.0
+started_at: 
+finishes_at: 
+m1: 3
+m2: 5
 sigma: 4
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 tags:
  - photoevaporation
 ---
 
-notes:: "2:1 resonance, inwards migration, eccentricities rising"
+notes:: "2:1 resonance, inwards migration, eccentricities rise then fall"
 semi_major_axes_plot:: ![[semi_major_axes_3j_5j_4s_4a_0pe.png]]
 period_ratio:: 2.03 ± 0.03
 period_ratio_plot:: ![[period_ratio_3j_5j_4s_4a_0pe.png]]

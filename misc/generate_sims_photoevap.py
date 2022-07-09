@@ -11,16 +11,6 @@ Ninterm = 200
 conversionFactor = analysis.units.convertToRealTime(1)
 
 
-# def keepFirstNLinesofFile(file, N):
-
-#     with open(file) as f:
-#         lines = [f.readline() for _ in range(N)]
-
-#     with open(file, "w") as f:
-#         f.writelines(lines)
-
-
-
 sims = [
     ("2j_2j_2s_4a_2pe", 60000),
     ("3j_3j_3s_4a_3pe", 50000),
@@ -31,6 +21,7 @@ sims = [
     ("3j_6j_3s_4a_3pe", 100000),
     ("3j_5j_4s_4a_4pe", 80000),
     ("5j_5j_5s_4a_5pe", 50000),
+    ("7j_10j_8s_4a_8pe", 150000)
 ]
 
 
@@ -72,10 +63,6 @@ for (setupName, photoevapStartTime) in sims:
         except Exception as e:
             print("Failed to copy %s to %s. Error:" % (src, dst))
             print(e)
-
-    # Remove outputs at times past the PE start time from planetX.dat files
-    # for p in planetFiles:
-    #     keepFirstNLinesofFile("%s%s.dat" % (setupName, p), outputNo)
 
 
     # Generate .par files for the new simulation with PE
