@@ -1,12 +1,12 @@
 ---
 status: Not running
-started_at: 
-finishes_at: 
-m1: 1
-m2: 1
+started_at:
+finishes_at:
+m1: 1.0
+m2: 1.0
 sigma: 1
 alpha: 4
-photoevaporation: 
+photoevaporation: 0
 ---
 
 notes:: "initially 2:1 resonance, then period ratio drops"
