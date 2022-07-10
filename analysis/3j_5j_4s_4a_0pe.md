@@ -1,12 +1,12 @@
 ---
-status: Not running
-started_at: 
-finishes_at: 
-m1: 3
-m2: 5
+status: Running
+started_at:
+finishes_at:
+m1: 3.0
+m2: 5.0
 sigma: 4
 alpha: 4
-photoevaporation: 
+photoevaporation: 0
 tags:
  - photoevaporation
 ---
@@ -18,7 +18,7 @@ period_ratio_plot:: ![[period_ratio_3j_5j_4s_4a_0pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_3j_5j_4s_4a_0pe.png]]
 eccentricity_plot:: ![[eccentricity_3j_5j_4s_4a_0pe.png]]
-e1:: 0.190
-e2:: 0.032
+e1:: 0.188
+e2:: 0.031
 gas_density_plot:: ![[gas_density_3j_5j_4s_4a_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_3j_5j_4s_4a_0pe.png]]

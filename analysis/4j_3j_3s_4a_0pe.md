@@ -1,5 +1,5 @@
 ---
-status: Running
+status: Not running
 started_at:
 finishes_at:
 m1: 4.0
@@ -16,7 +16,7 @@ period_ratio_plot:: ![[period_ratio_4j_3j_3s_4a_0pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_4j_3j_3s_4a_0pe.png]]
 eccentricity_plot:: ![[eccentricity_4j_3j_3s_4a_0pe.png]]
-e1:: 0.172
-e2:: 0.099
+e1:: 0.173
+e2:: 0.102
 gas_density_plot:: ![[gas_density_4j_3j_3s_4a_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_4j_3j_3s_4a_0pe.png]]
