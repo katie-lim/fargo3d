@@ -14,6 +14,7 @@ conversionFactor = analysis.units.convertToRealTime(1)
 sims = [
     ("2j_2j_2s_4a_2pe", 60000),
     ("3j_3j_3s_4a_3pe", 50000),
+    ("3j_3j_3s_4a_6pe", 50000),
     ("2j_2j_1s_4a_1pe", 100000),
 
     ("1j_1j_1s_3a_1pe", 100000),

@@ -45,6 +45,7 @@ simsToSubmit = []
 sims = [
         "2j_2j_2s_4a_2pe",
         "3j_3j_3s_4a_3pe",
+        "3j_3j_3s_4a_6pe",
         "2j_2j_1s_4a_1pe",
         "1j_1j_1s_3a_1pe",
         "6j_8j_7s_4a_7pe",
