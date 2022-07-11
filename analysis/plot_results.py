@@ -94,7 +94,7 @@ def plotResultsForSimulation(setupName, show=True):
         labels = ["no PE", "with PE"]
         lastOutputNumberInclPE = min(findLastOutputNumber(setupName), findLastOutputNumber(setupNameNoPe))
         time = indexToRealTime(lastOutputNumberInclPE, parFile)
-        title = "%s with & without PE\nt = %.32 %s" % (setupNameNoPe.replace("_0pe", ""), time, unit_of_time)
+        title = "%s with & without PE\nt = %.2f %s" % (setupNameNoPe.replace("_0pe", ""), time, unit_of_time)
         
         gasdensFiles = ["outputs/%s/gasdens%d.dat" % (s, lastOutputNumberInclPE) for s in [setupNameNoPe, setupName]]
         
