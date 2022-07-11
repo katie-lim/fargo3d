@@ -60,6 +60,14 @@ def getParameters(variables, parFile):
     return [getVariableFromParFile(var, fileText) for var in variables]
 
 
+def indexToRealTime(index, parFile):
+    dt, Ninterm = getParameters(["DT", "Ninterm"], parFile)
+    time = index * dt * Ninterm # the time in scale-free units
+    time = convertToRealTime(time) # convert to real units
+    
+    return time
+
+
 def loadData(dataFile, parFile, logScale, logRadialSpacing, useRealUnits=True):
     """Loads the output data contained within the specified dataFile.
 
@@ -432,9 +440,7 @@ def plotPolar(fileName, parFile, logRadialSpacing, logScale=True, saveFileName=N
 
     # Calculate the time
     index = int(re.findall("([\d]+).dat", fileName)[0]) # find the index of the file so we can calculate the time
-    dt, Ninterm = getParameters(["DT", "Ninterm"], parFile)
-    time = index * dt * Ninterm # the time in scale-free units
-    time = convertToRealTime(time) # convert to real units
+    time = indexToRealTime(index, parFile)
 
     title = fileName + "\n" + "t = " + ("%.2f" % time) + " " + unit_of_time
     plt.title(title)
@@ -502,8 +508,7 @@ def plotMassOfDisk(setupName, parFile, logRadialSpacing, useRealUnits=False, sav
     dt, Ninterm = getParameters(["DT", "Ninterm"], parFile)
 
     indices = list(range(lastOutputNo+1))
-    time = [i * dt * Ninterm for i in indices] # the time in scale-free units
-    time = convertToRealTime(np.array(time)) # convert to real units
+    time = [indexToRealTime(i, parFile) for i in indices]
 
 
     # Plot results
