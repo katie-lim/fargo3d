@@ -64,7 +64,7 @@ def indexToRealTime(index, parFile):
     dt, Ninterm = getParameters(["DT", "Ninterm"], parFile)
     time = index * dt * Ninterm # the time in scale-free units
     time = convertToRealTime(time) # convert to real units
-    
+
     return time
 
 
@@ -435,7 +435,7 @@ def plotPolar(fileName, parFile, logRadialSpacing, logScale=True, saveFileName=N
 
     # Add colorbar
     cb = fig.colorbar(cax)
-    label = "log(gas density / 1" + density_unit + ")" if logScale else "gas density (" + density_unit + ")"
+    label = r"log($\Sigma$ / " + density_unit + ")" if logScale else r"$\Sigma$ (" + density_unit + ")"
     cb.set_label(label)
 
     # Calculate the time
@@ -479,11 +479,11 @@ def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, 
             plt.plot(rad, avgSurfDens, linewidth=2)
 
 
-    plt.xlabel("radius [" + R0_unit + "]")
+    plt.xlabel("r [" + R0_unit + "]")
     if logScale:
-        plt.ylabel("log(avg surface density [" + density_unit + "])")
+        plt.ylabel(r"log($\overline{\Sigma}$(r) [" + density_unit + "])")
     else:
-        plt.ylabel("avg surface density [" + density_unit + "]")
+        plt.ylabel(r"$\overline{\Sigma}$(r) [" + density_unit + "]")
     plt.title(title)
     if labels: plt.legend()
 

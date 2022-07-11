@@ -9,8 +9,8 @@ R0_in_m = 20*1.496e11
 Mstar = 1
 Mstar_unit = "M_Sun"
 Mstar_in_kg = 1.989e30
-density_scale_factor = (Mstar_in_kg / R0_in_m**2)
-density_unit = "kg/m$^2$"
+density_scale_factor = (Mstar_in_kg / R0_in_m**2) / 10
+density_unit = "gcm$^{-2}$"
 
 unit_of_time_in_s = 3.154e7 # seconds in a year
 unit_of_time = "yr"
