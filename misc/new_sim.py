@@ -41,6 +41,7 @@ def generate_par_file(setupName):
 
         planet_cfg = "planets/%s.cfg" % planetNames
         planet_cfg_fixed = "planets/fixed/%s_fixed.cfg" % planetNames
+        alpha = float(alpha) * 1e-3
         surf_dens = float(surfaceDensity)
         pe = float(photoevaporation)
 
@@ -54,7 +55,7 @@ def generate_par_file(setupName):
         f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
         placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}")
-        replace = ("%.10e" % (4.5007863248e-04 * surf_dens), alpha, "%.2e" % (1.0e43 * (pe**2)), planet_cfg, setupName)
+        replace = ("%.10e" % (3.3755897436e-03 * surf_dens), "%.3e" % (alpha), "%.2e" % (1.0e43 * (pe**2)), planet_cfg, setupName)
 
         for line in f1:
             for placeholder, rep in zip(placeholders, replace):
