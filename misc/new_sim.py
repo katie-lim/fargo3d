@@ -32,7 +32,7 @@ def generate_planet_cfg(planetNames):
 
 
 def generate_par_file(setupName):
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_(\d)a_([\d.]+)h_([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+)pe"
     matches = re.findall(regex, setupName)
     print(matches[0])
 
