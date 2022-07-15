@@ -32,17 +32,18 @@ def generate_planet_cfg(planetNames):
 
 
 def generate_par_file(setupName):
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_(\d)a_([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_(\d)a_([\d.]+)h_([\d.]+)pe"
     matches = re.findall(regex, setupName)
     print(matches[0])
 
     if len(matches) > 0:
-        planetNames, surfaceDensity, alpha, photoevaporation = matches[0]
+        planetNames, surfaceDensity, alpha, aspectRatio, photoevaporation = matches[0]
 
         planet_cfg = "planets/%s.cfg" % planetNames
         planet_cfg_fixed = "planets/fixed/%s_fixed.cfg" % planetNames
         alpha = float(alpha) * 1e-3
         surf_dens = float(surfaceDensity)
+        aspect_ratio = float(aspectRatio) * 0.01
         pe = float(photoevaporation)
 
         # Generate the planet .cfg files
@@ -54,8 +55,13 @@ def generate_par_file(setupName):
         f2 = open("setups/fargo/%s.par" % setupName, 'w')
         f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
-        placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}")
-        replace = ("%.10e" % (3.3755897436e-03 * surf_dens), "%.3e" % (alpha), "%.2e" % (1.0e43 * (pe**2)), planet_cfg, setupName)
+        placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{ASPECTRATIO}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}")
+        replace = ("%.10e" % (3.3755897436e-03 * surf_dens),
+                    "%.3e" % (alpha),
+                    "%.3f" % (aspect_ratio),
+                    "%.2e" % (1.0e43 * (pe**2)),
+                    planet_cfg,
+                    setupName)
 
         for line in f1:
             for placeholder, rep in zip(placeholders, replace):
