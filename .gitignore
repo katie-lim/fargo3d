@@ -1,7 +1,9 @@
 *TEST/*
 bin/*
 outputs/*
+initial_outputs/*
 fargo3d
+fargo3d_photoevap
 arch/*
 scripts/bound_*.code
 src/rescale.c
