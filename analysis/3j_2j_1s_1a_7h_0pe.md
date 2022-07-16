@@ -1,5 +1,5 @@
 ---
-status: Running
+status: Not running
 started_at:
 finishes_at:
 m1: 3.0
@@ -11,12 +11,12 @@ photoevaporation: 0
 
 notes::
 semi_major_axes_plot:: ![[semi_major_axes_3j_2j_1s_1a_7h_0pe.png]]
-period_ratio:: 2.02 ± 0.03
+period_ratio:: 2.02 ± 0.04
 period_ratio_plot:: ![[period_ratio_3j_2j_1s_1a_7h_0pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_3j_2j_1s_1a_7h_0pe.png]]
 eccentricity_plot:: ![[eccentricity_3j_2j_1s_1a_7h_0pe.png]]
 e1:: 0.099
-e2:: 0.072
+e2:: 0.052
 gas_density_plot:: ![[gas_density_3j_2j_1s_1a_7h_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_3j_2j_1s_1a_7h_0pe.png]]
