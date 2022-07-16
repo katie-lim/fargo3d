@@ -13,13 +13,13 @@ class Simulation(TypedDict):
 
 
 def getSimulationFromLabel(setupName) -> Simulation:
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_(\d)a_([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+)pe"
     matches = re.findall(regex, setupName)
 
     if len(matches) == 0:
         raise ValueError("The simulation label %s doesn't follow the convention." % setupName)
 
-    planetNames, sigma, alpha, photoevaporation = matches[0]
+    planetNames, sigma, alpha, aspectRatio, photoevaporation = matches[0]
 
     # [:-1] to ignore the j
     planetMasses = [float(planet[:-1]) for planet in planetNames.split("_")]
