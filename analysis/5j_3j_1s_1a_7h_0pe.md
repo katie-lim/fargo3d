@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 5.0
-m2: 3.0
+started_at: 
+finishes_at: 
+m1: 5
+m2: 3
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: outwards migration, hits outer boundary
 semi_major_axes_plot:: ![[semi_major_axes_5j_3j_1s_1a_7h_0pe.png]]
 period_ratio:: 2.18 ± 0.12
 period_ratio_plot:: ![[period_ratio_5j_3j_1s_1a_7h_0pe.png]]

@@ -1,15 +1,15 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 7.0
-m2: 7.0
+started_at: 
+finishes_at: 
+m1: 7
+m2: 7
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: "2:1 resonance"
 semi_major_axes_plot:: ![[semi_major_axes_7j_7j_1s_1a_7h_0pe.png]]
 period_ratio:: 2.08 ± 0.06
 period_ratio_plot:: ![[period_ratio_7j_7j_1s_1a_7h_0pe.png]]

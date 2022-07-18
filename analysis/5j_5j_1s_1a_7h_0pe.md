@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 5.0
-m2: 5.0
+started_at: 
+finishes_at: 
+m1: 5
+m2: 5
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: "2:1 resonance, but then planets fall towards star"
 semi_major_axes_plot:: ![[semi_major_axes_5j_5j_1s_1a_7h_0pe.png]]
 period_ratio:: 2.20 ± 0.20
 period_ratio_plot:: ![[period_ratio_5j_5j_1s_1a_7h_0pe.png]]
