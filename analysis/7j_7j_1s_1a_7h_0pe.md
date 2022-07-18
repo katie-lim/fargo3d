@@ -11,12 +11,12 @@ photoevaporation: 0
 
 notes::
 semi_major_axes_plot:: ![[semi_major_axes_7j_7j_1s_1a_7h_0pe.png]]
-period_ratio:: 2.70 ± 0.11
+period_ratio:: 2.08 ± 0.06
 period_ratio_plot:: ![[period_ratio_7j_7j_1s_1a_7h_0pe.png]]
-suggested_resonance:: 
+suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_7j_7j_1s_1a_7h_0pe.png]]
 eccentricity_plot:: ![[eccentricity_7j_7j_1s_1a_7h_0pe.png]]
-e1:: 0.009
-e2:: 0.038
+e1:: 0.122
+e2:: 0.017
 gas_density_plot:: ![[gas_density_7j_7j_1s_1a_7h_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_7j_7j_1s_1a_7h_0pe.png]]
