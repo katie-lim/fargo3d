@@ -43,8 +43,8 @@ def getRunningSims():
 
 simsToSubmit = []
 sims = [
-        "7j_7j_0.667s_1a_9h_0pe",
-        "7j_7j_1s_1a_7h_0pe"
+        "7j_7j_0.667s_1a_9h_0.667pe",
+        "7j_7j_1s_1a_7h_1pe"
 
         # "2j_2j_2s_4a_2pe",
         # "3j_3j_3s_4a_3pe",

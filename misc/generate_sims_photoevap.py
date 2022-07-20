@@ -12,8 +12,8 @@ conversionFactor = analysis.units.convertToRealTime(1)
 
 
 sims = [
-    ("7j_7j_0.667s_1a_9h_0pe", 125000),
-    ("7j_7j_1s_1a_7h_0pe", 150000)
+    ("7j_7j_0.667s_1a_9h_0.667pe", 125000),
+    ("7j_7j_1s_1a_7h_1pe", 150000)
 
 
     # ("2j_2j_2s_4a_2pe", 60000),
