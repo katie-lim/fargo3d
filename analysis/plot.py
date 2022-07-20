@@ -164,7 +164,7 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
 
 def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=True):
     parameterName = parameterName.lower()
-    setupNameNoPe = re.sub("[0-9]pe", "0pe", setupName)
+    setupNameNoPe = getSetupNameNoPe(setupName)
 
     filesInclNoPe = ["outputs/%s/orbit%s.dat" % (setupName, planetNo) for setupName in [setupNameNoPe, setupName] for planetNo in [0, 1]]
 

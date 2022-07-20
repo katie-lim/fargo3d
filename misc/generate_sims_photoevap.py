@@ -1,10 +1,10 @@
 # %%
-import re
 import os
 import shutil
 import sys
 sys.path.insert(0, os.path.abspath('./'))
 import analysis.units
+from analysis.utilities import *
 
 dt = 0.314159265359
 Ninterm = 200
@@ -31,8 +31,8 @@ sims = [
 
 
 for (setupName, photoevapStartTime) in sims:
-    print("%s" % setupName)
-    setupNameNoPe = re.sub("[0-9]pe", "0pe", setupName)
+    print(setupName)
+    setupNameNoPe = getSetupNameNoPe(setupName)
 
 
     # Calculate output number to start PE at

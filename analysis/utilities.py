@@ -52,6 +52,11 @@ def findLastOutputNumber(setupName):
     numbers = [extractNumber(file) for file in files]
 
     return max(numbers)
+
+
+def getSetupNameNoPe(setupName):
+    return re.sub("_[.0-9]+pe", "_0pe", setupName)
+
 # %%
 # findLastOutputNumber("2-jupiter-2.5x-sigma0-0.001-alpha")
 # #%%

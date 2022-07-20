@@ -49,7 +49,7 @@ def getResultsTemplate():
 
 
 def plotResultsForSimulation(setupName, show=True):
-    setupNameNoPe = re.sub("[0-9]pe", "0pe", setupName)
+    setupNameNoPe = getSetupNameNoPe(setupName)
     parFile = "setups/fargo/%s.par" % setupName
 
     orbit0 = "outputs/%s/orbit0.dat" % setupName
@@ -95,10 +95,10 @@ def plotResultsForSimulation(setupName, show=True):
         lastOutputNumberInclPE = min(findLastOutputNumber(setupName), findLastOutputNumber(setupNameNoPe))
         time = indexToRealTime(lastOutputNumberInclPE, parFile)
         title = "%s with & without PE\nt = %.2f %s" % (setupNameNoPe.replace("_0pe", ""), time, unit_of_time)
-        
+
         gasdensFiles = ["outputs/%s/gasdens%d.dat" % (s, lastOutputNumberInclPE) for s in [setupNameNoPe, setupName]]
-        
-        
+
+
         plotAzimuthallyAvgedSurfaceDensities(gasdensFiles, [parFile, parFile], True, logScale=True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), labels=labels, title=title, show=show)
     else:
         plotAzimuthallyAvgedSurfaceDensities([lastGasdens], [parFile], True, logScale=True, saveFileName=getPlotSavePath("azimuthally_avged_surface_density", setupName), show=show)
