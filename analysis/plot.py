@@ -193,6 +193,63 @@ def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=Tru
     showFigure(show)
 
 
+def plotOrbitalParameterDerivative(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False):
+    """Plots the derivative of the specified orbital parameter against time for multiple setups.
+
+    Args:
+        fileNames (list of str): The paths to the orbitX.dat files to plot.
+        parameterName (str): The parameter to plot -- one of: eccentricity, semiMajorAxis
+        labels (list of str): Labels for each of the setups to use in the figure.
+        title (str, optional): The title of the figure.
+        saveFileName (str, optional): The path to save the resulting plot to. If None, the figure is not saved.
+    """
+    parameterName = parameterName.lower()
+    plt.figure(dpi=dpi)
+
+    # Load the data
+    for i in range(len(fileNames)):
+        data = np.loadtxt(fileNames[i])
+        date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
+
+        # Convert to real units
+        date = [convertToRealTime(time) for time in date]
+        semiMajorAxis *= R0
+
+        # Plot the data
+        if parameterName == "eccentricity":
+            values = eccentricity
+        elif parameterName == "semimajoraxis":
+            values = semiMajorAxis
+        else:
+            raise Exception("The parameter name " + parameterName + " is not recognised.")
+
+
+        gradient = np.gradient(values, date)
+        gradientNormalised = gradient / values
+        plt.plot(date[Ni:Nf], gradientNormalised[Ni:Nf], label=labels[i])
+
+
+    if parameterName == "eccentricity":
+        plt.ylabel("$\dot{e}/e$ [time unit$^{-1}$]")
+        plt.gca().set_ylim(bottom=0)
+    elif parameterName == "semimajoraxis":
+        ylabel = "$\dot{a}/a$ [time unit$^{-1}$]"
+        plt.ylabel(ylabel)
+
+
+    xlabel = "t [" + unit_of_time + "]"
+    plt.xlabel(xlabel)
+    if title: plt.title(title)
+    plt.legend()
+    plt.gcf().set_size_inches(8, 5)
+
+    if saveFileName: plt.savefig(saveFileName, dpi=dpi)
+
+    if not dontClose:
+        showFigure(show)
+
+
+
 def getEccentricity(fileName):
     # Load the data
     data = np.loadtxt(fileName)
