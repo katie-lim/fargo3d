@@ -43,16 +43,19 @@ def getRunningSims():
 
 simsToSubmit = []
 sims = [
-        "2j_2j_2s_4a_2pe",
-        "3j_3j_3s_4a_3pe",
-        "3j_3j_3s_4a_6pe",
-        "2j_2j_1s_4a_1pe",
-        "1j_1j_1s_3a_1pe",
-        "6j_8j_7s_4a_7pe",
-        "3j_6j_3s_4a_3pe",
-        "3j_5j_4s_4a_4pe",
-        "5j_5j_5s_4a_5pe",
-        "7j_10j_8s_4a_8pe"
+        "7j_7j_0.667s_1a_9h_0pe",
+        "7j_7j_1s_1a_7h_0pe"
+
+        # "2j_2j_2s_4a_2pe",
+        # "3j_3j_3s_4a_3pe",
+        # "3j_3j_3s_4a_6pe",
+        # "2j_2j_1s_4a_1pe",
+        # "1j_1j_1s_3a_1pe",
+        # "6j_8j_7s_4a_7pe",
+        # "3j_6j_3s_4a_3pe",
+        # "3j_5j_4s_4a_4pe",
+        # "5j_5j_5s_4a_5pe",
+        # "7j_10j_8s_4a_8pe"
         ]
 
 runningSims = getRunningSims()
