@@ -1,6 +1,6 @@
 # %%
 from analysis.units import *
-from analysis.utilities import findLastOutputNumber
+from analysis.utilities import *
 import re
 
 import matplotlib.pyplot as plt
