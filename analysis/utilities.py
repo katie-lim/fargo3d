@@ -13,7 +13,7 @@ class Simulation(TypedDict):
 
 
 def getSimulationFromLabel(setupName) -> Simulation:
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+r_[\d.]+r_)?([\d.]+)pe"
     matches = re.findall(regex, setupName)
 
     if len(matches) == 0:

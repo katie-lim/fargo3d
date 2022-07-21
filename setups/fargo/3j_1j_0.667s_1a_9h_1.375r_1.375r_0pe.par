@@ -2,12 +2,12 @@ Setup			fargo
 
 ### Disk parameters
 
-AspectRatio     	{{ASPECTRATIO}}           Thickness over Radius in the disc
-Sigma0			{{SIGMA0}}	Surface Density at r=1
-Alpha           {{ALPHA}}
+AspectRatio     	0.090           Thickness over Radius in the disc
+Sigma0			2.2515183590e-03	Surface Density at r=1
+Alpha           1.000e-03
 SigmaSlope		1.0		Slope for the surface density
 FlaringIndex		0.25		Slope for the aspect-ratio
-Phi                 {{PHOTOEVAPORATION}}
+Phi                 0.00e+00
 
 # Radial range for damping (in period-ratios). Values smaller than one
 # prevent damping.
@@ -21,8 +21,8 @@ TauDamp 0.3
 
 ### Planet parameters
 
-PlanetConfig		{{PLANET_CFG}}
-MassTaper           {{MASSTAPER}}
+PlanetConfig		planets/3j_1j_1.375r_1.375r.cfg
+MassTaper           1013.0570
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
@@ -45,10 +45,10 @@ Frame			F		Method for moving the frame of reference
 
 DT			0.314159265359	Physical time between fine-grain outputs
 Ninterm	 		200		Number of DTs between scalar fields outputs
-FixedNtot       {{FIXEDNTOT}}        Total number of DTs to keep the planets fixed for
+FixedNtot       6449        Total number of DTs to keep the planets fixed for
 Ntot			200000		Total number of DTs
 
-OutputDir		@outputs/{{OUTPUT}}
+OutputDir		@outputs/3j_1j_0.667s_1a_9h_1.375r_1.375r_0pe
 
 ### Plotting parameters
 
