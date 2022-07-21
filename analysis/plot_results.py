@@ -60,8 +60,6 @@ def plotResultsForSimulation(setupName, show=True):
 
     lastOutputNumber = findLastOutputNumber(setupName)
     lastGasdens = "outputs/%s/gasdens%d.dat" % (setupName, lastOutputNumber)
-    if photoevap:
-        lastGasdensNoPe = "outputs/%s/gasdens%d.dat" % (setupNameNoPe, lastOutputNumber)
 
 
     # Plot results
