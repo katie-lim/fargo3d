@@ -39,7 +39,7 @@ def generate_planet_cfg(planetNames, planetRadiiMultipliers):
 
     with open(fileName, "a") as f:
         for i in range(len(planet_masses)):
-            f.write("\nJupiter%d	 	%.3f		%s	 0.0		YES   		YES" % (i+1, planet_radii[i], planet_masses[i]))
+            f.write("\nJupiter%d	 	%.3f		%.6f	 0.0		YES   		YES" % (i+1, planet_radii[i], planet_masses[i]))
 
 
     # Generate the .cfg file with fixed planets (set 'Feels disk' and 'Feels others' to NO)
@@ -52,7 +52,7 @@ def generate_planet_cfg(planetNames, planetRadiiMultipliers):
 
     with open(fileName, "a") as f:
         for i in range(len(planet_masses)):
-            f.write("\nJupiter%d	 	%.3f		%s	 0.0		NO   		NO" % (i+1, planet_radii[i], planet_masses[i]))
+            f.write("\nJupiter%d	 	%.3f		%.6f	 0.0		NO   		NO" % (i+1, planet_radii[i], planet_masses[i]))
 
 
 
