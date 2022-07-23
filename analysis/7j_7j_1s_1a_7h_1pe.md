@@ -1,5 +1,5 @@
 ---
-status: Running
+status: Queuing
 started_at:
 finishes_at:
 m1: 7.0
@@ -16,7 +16,7 @@ period_ratio_plot:: ![[period_ratio_7j_7j_1s_1a_7h_1pe.png]]
 suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_7j_7j_1s_1a_7h_1pe.png]]
 eccentricity_plot:: ![[eccentricity_7j_7j_1s_1a_7h_1pe.png]]
-e1:: 0.222
-e2:: 0.050
+e1:: 0.224
+e2:: 0.056
 gas_density_plot:: ![[gas_density_7j_7j_1s_1a_7h_1pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_7j_7j_1s_1a_7h_1pe.png]]
