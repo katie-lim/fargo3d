@@ -1,12 +1,12 @@
 ---
 status: Not running
-started_at: 
-finishes_at: 
-m1: 6
-m2: 2
+started_at:
+finishes_at:
+m1: 6.0
+m2: 2.0
 sigma: 1
 alpha: 1
-photoevaporation: 
+photoevaporation: 0
 ---
 
 notes:: outwards migration, hits outer boundary
