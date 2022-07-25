@@ -1,12 +1,12 @@
 ---
 status: Not running
-started_at: 
-finishes_at: 
-m1: 3
-m2: 1
+started_at:
+finishes_at:
+m1: 3.0
+m2: 1.0
 sigma: 1
 alpha: 1
-photoevaporation: 
+photoevaporation: 0
 ---
 
 notes:: "eventually enters 2:1 resonance"
