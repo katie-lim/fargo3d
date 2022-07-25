@@ -124,10 +124,19 @@ sims = [
   #      "0.7j_0.7j_1s_0.7a_8h_0pe",
 
 
+
+        "3j_1j_1s_1a_7h_1.375r_1.375r_0pe",
 	    "7j_7j_0.2667s_5a_6h_0pe",
         "7j_7j_0.667s_1a_9h_0pe",
         "7j_7j_1s_1a_7h_0pe",
         "7j_7j_1s_0.7a_8h_0pe",
+
+
+
+        "5j_3j_0.667s_1a_9h_0pe",
+        "5j_5j_0.2667s_5a_6h_0pe",
+        "9j_3j_0.667s_1a_9h_0pe",
+        "3j_3j_1s_1a_7h_0pe",
         ]
 
 runningSims = getRunningSims()

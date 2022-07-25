@@ -1,15 +1,15 @@
 ---
 status: Not running
-started_at:
-finishes_at:
-m1: 9.0
-m2: 3.0
+started_at: 
+finishes_at: 
+m1: 9
+m2: 3
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: planets leave domain
 semi_major_axes_plot:: ![[semi_major_axes_9j_3j_1s_1a_7h_0pe.png]]
 period_ratio:: 0.09 ± 0.00
 period_ratio_plot:: ![[period_ratio_9j_3j_1s_1a_7h_0pe.png]]
