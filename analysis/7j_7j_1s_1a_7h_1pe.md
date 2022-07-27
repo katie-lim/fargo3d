@@ -1,15 +1,15 @@
 ---
 status: Running
-started_at:
-finishes_at:
-m1: 7.0
-m2: 7.0
+started_at: 
+finishes_at: 
+m1: 7
+m2: 7
 sigma: 1
 alpha: 1
 photoevaporation: 1
 ---
 
-notes::
+notes:: PE causes planets to leave resonance, $e_1$ declines?
 semi_major_axes_plot:: ![[semi_major_axes_7j_7j_1s_1a_7h_1pe.png]]
 period_ratio:: 2.06 ± 0.08
 period_ratio_plot:: ![[period_ratio_7j_7j_1s_1a_7h_1pe.png]]
