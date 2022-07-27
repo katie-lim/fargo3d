@@ -3,6 +3,8 @@ import sys
 from shutil import copyfile
 import re
 
+from numpy import outer
+
 setupName = sys.argv[1]
 
 
@@ -57,12 +59,12 @@ def generate_planet_cfg(planetNames, planetRadiiMultipliers):
 
 
 def generate_par_file(setupName):
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+r_[\d.]+r_)?([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+r_[\d.]+r_)?([\d.]+R_)?([\d.]+)pe"
     matches = re.findall(regex, setupName)
     print(matches[0])
 
     if len(matches) > 0:
-        planetNames, surfaceDensity, alpha, aspectRatio, planetRadii, photoevaporation = matches[0]
+        planetNames, surfaceDensity, alpha, aspectRatio, planetRadii, outerBound, photoevaporation = matches[0]
 
         if planetRadii == "":
             planet_cfg = "planets/%s.cfg" % planetNames
@@ -92,12 +94,20 @@ def generate_par_file(setupName):
         orbits200 = 2 * orbits100
 
 
+        # Set the default outer boundary
+        if (outerBound == ""):
+            outerBound = 3.75
+        else:
+            outerBound = outerBound[:-2] # Remove the "R_"
+            outerBound = float(outerBound)
+
+
         # Create the .par files for the simulation
         f1 = open('setups/fargo/template.par', 'r')
         f2 = open("setups/fargo/%s.par" % setupName, 'w')
         f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
-        placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{ASPECTRATIO}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}", "{{MASSTAPER}}", "{{FIXEDNTOT}}")
+        placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{ASPECTRATIO}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}", "{{MASSTAPER}}", "{{FIXEDNTOT}}", "{{OUTERBOUNDARY}}")
         replace = (
                     "%.10e" % (3.3755897436e-03 * surf_dens),
                     "%.3e" % (alpha),
@@ -106,7 +116,8 @@ def generate_par_file(setupName):
                     planet_cfg,
                     setupName,
                     "%.4f" % (orbits100),
-                    "%d" % (round(orbits200 / dt))
+                    "%d" % (round(orbits200 / dt)),
+                    "%.2f" % (outerBound)
         )
 
         for line in f1:
