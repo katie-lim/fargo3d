@@ -58,20 +58,47 @@ def generate_planet_cfg(planetNames, planetRadiiMultipliers):
 
 
 
+    # Generate a .cfg file with the inner planet fixed
+    if planetRadiiMultipliers == "":
+        fileName = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+    else:
+        fileName = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadiiMultipliers[:-1]) # :-1 to exclude the _
+
+    copyfile("planets/planet_template.cfg", fileName)
+
+    with open(fileName, "a") as f:
+        for i in range(len(planet_masses)):
+            if i == 0:
+                f.write("\nJupiter%d	 	%.3f		%.6f	 0.0		NO   		NO" % (i+1, planet_radii[i], planet_masses[i]))
+            else:
+                f.write("\nJupiter%d	 	%.3f		%.6f	 0.0		YES   		YES" % (i+1, planet_radii[i], planet_masses[i]))
+
+
+
+
 def generate_par_file(setupName):
-    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+r_[\d.]+r_)?([\d.]+R_)?([\d.]+)pe"
+    regex = "([\d.]+j_[\d.]+j)_([\d.]+)s_([\d.]+)a_([\d.]+)h_([\d.]+r_[\d.]+r_)?([\d.]+R_)?([\d.]+)pe(_f)?"
     matches = re.findall(regex, setupName)
     print(matches[0])
 
     if len(matches) > 0:
-        planetNames, surfaceDensity, alpha, aspectRatio, planetRadii, outerBound, photoevaporation = matches[0]
+        planetNames, surfaceDensity, alpha, aspectRatio, planetRadii, outerBound, photoevaporation, innerFixed = matches[0]
 
-        if planetRadii == "":
-            planet_cfg = "planets/%s.cfg" % planetNames
-            planet_cfg_fixed = "planets/fixed/%s_fixed.cfg" % planetNames
+
+        if innerFixed == "_f":
+            if planetRadii == "":
+                planet_cfg = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+                planet_cfg_fixed = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+            else:
+                planet_cfg = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
+                planet_cfg_fixed = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
         else:
-            planet_cfg = "planets/%s_%s.cfg" % (planetNames, planetRadii[:-1])
-            planet_cfg_fixed = "planets/fixed/%s_%s_fixed.cfg" % (planetNames, planetRadii[:-1])
+            if planetRadii == "":
+                planet_cfg = "planets/%s.cfg" % planetNames
+                planet_cfg_fixed = "planets/fixed/%s_fixed.cfg" % planetNames
+            else:
+                planet_cfg = "planets/%s_%s.cfg" % (planetNames, planetRadii[:-1])
+                planet_cfg_fixed = "planets/fixed/%s_%s_fixed.cfg" % (planetNames, planetRadii[:-1])
 
         alpha = float(alpha) * 1e-3
         surf_dens = float(surfaceDensity)
@@ -105,7 +132,9 @@ def generate_par_file(setupName):
         # Create the .par files for the simulation
         f1 = open('setups/fargo/template.par', 'r')
         f2 = open("setups/fargo/%s.par" % setupName, 'w')
-        f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
+
+        if innerFixed != "_f":
+            f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
         placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{ASPECTRATIO}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}", "{{MASSTAPER}}", "{{FIXEDNTOT}}", "{{OUTERBOUNDARY}}")
         replace = (
@@ -125,18 +154,21 @@ def generate_par_file(setupName):
                 line = line.replace(placeholder, rep)
             f2.write(line)
 
-            if line.startswith("PlanetConfig"):
-                line = line.replace(planet_cfg, planet_cfg_fixed)
-            elif line.startswith("FixedNtot"):
-                line = line.replace("FixedNtot", "Ntot")
-            elif line.startswith("Ntot"):
-                line = line.replace("Ntot", "TotalNtot")
+            if innerFixed != "_f":
+                if line.startswith("PlanetConfig"):
+                    line = line.replace(planet_cfg, planet_cfg_fixed)
+                elif line.startswith("FixedNtot"):
+                    line = line.replace("FixedNtot", "Ntot")
+                elif line.startswith("Ntot"):
+                    line = line.replace("Ntot", "TotalNtot")
 
-            f3.write(line)
+                f3.write(line) 
 
         f1.close()
         f2.close()
-        f3.close()
+
+        if innerFixed != "_f":
+            f3.close()
 
     else:
         print("The simulation label %s doesn't follow convention." % setupName)
