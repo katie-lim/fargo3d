@@ -22,7 +22,7 @@ TauDamp 0.3
 ### Planet parameters
 
 PlanetConfig		planets/5j_5j_1.5r_1.5r.cfg
-MassTaper           1154.2948
+MassTaper           2885.7370
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
@@ -45,7 +45,7 @@ Frame			F		Method for moving the frame of reference
 
 DT			0.314159265359	Physical time between fine-grain outputs
 Ninterm	 		200		Number of DTs between scalar fields outputs
-FixedNtot       7348        Total number of DTs to keep the planets fixed for
+FixedNtot       18371        Total number of DTs to keep the planets fixed for
 Ntot			200000		Total number of DTs
 
 OutputDir		@outputs/5j_5j_1s_1a_7h_1.5r_1.5r_4.5R_0pe

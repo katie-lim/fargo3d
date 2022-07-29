@@ -22,7 +22,7 @@ TauDamp 0.3
 ### Planet parameters
 
 PlanetConfig		planets/3j_2j.cfg
-MassTaper           628.3185
+MassTaper           1570.7962
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0
 Eccentricity		0.0
@@ -45,7 +45,7 @@ Frame			F		Method for moving the frame of reference
 
 DT			0.314159265359	Physical time between fine-grain outputs
 Ninterm	 		200		Number of DTs between scalar fields outputs
-FixedNtot       4000        Total number of DTs to keep the planets fixed for
+FixedNtot       10000        Total number of DTs to keep the planets fixed for
 Ntot			200000		Total number of DTs
 
 OutputDir		@outputs/3j_2j_1s_0.7a_8h_0pe

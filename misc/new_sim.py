@@ -118,7 +118,8 @@ def generate_par_file(setupName):
         # P² ∝ a³
         dt = 0.314159265359
         orbits100 = 628.3185 * math.pow(innerPlanetRadius, 3/2)
-        orbits200 = 2 * orbits100
+        orbits250 = 2.5 * orbits100
+        orbits500 = 5 * orbits100
 
 
         # Set the default outer boundary
@@ -142,8 +143,8 @@ def generate_par_file(setupName):
                     "%.2e" % (1.0e43 * (pe**2)),
                     planet_cfg,
                     setupName,
-                    "%.4f" % (orbits100),
-                    "%d" % (round(orbits200 / dt)),
+                    "%.4f" % (orbits250),
+                    "%d" % (round(orbits500 / dt)),
                     "%.2f" % (outerBound)
         )
 
