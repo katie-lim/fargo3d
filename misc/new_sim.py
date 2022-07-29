@@ -87,10 +87,10 @@ def generate_par_file(setupName):
 
         if innerFixed == "_f":
             if planetRadii == "":
-                planet_cfg = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+                planet_cfg = "planets/fixed/%s_fixed.cfg" % planetNames
                 planet_cfg_fixed = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
             else:
-                planet_cfg = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
+                planet_cfg = "planets/fixed/%s_%s_fixed.cfg" % (planetNames, planetRadii[:-1])
                 planet_cfg_fixed = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
         else:
             if planetRadii == "":
@@ -132,9 +132,7 @@ def generate_par_file(setupName):
         # Create the .par files for the simulation
         f1 = open('setups/fargo/template.par', 'r')
         f2 = open("setups/fargo/%s.par" % setupName, 'w')
-
-        if innerFixed != "_f":
-            f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
+        f3 = open("setups/fargo/fixed/%s_fixed.par" % setupName, 'w')
 
         placeholders = ("{{SIGMA0}}", "{{ALPHA}}", "{{ASPECTRATIO}}", "{{PHOTOEVAPORATION}}", "{{PLANET_CFG}}", "{{OUTPUT}}", "{{MASSTAPER}}", "{{FIXEDNTOT}}", "{{OUTERBOUNDARY}}")
         replace = (
@@ -154,21 +152,18 @@ def generate_par_file(setupName):
                 line = line.replace(placeholder, rep)
             f2.write(line)
 
-            if innerFixed != "_f":
-                if line.startswith("PlanetConfig"):
-                    line = line.replace(planet_cfg, planet_cfg_fixed)
-                elif line.startswith("FixedNtot"):
-                    line = line.replace("FixedNtot", "Ntot")
-                elif line.startswith("Ntot"):
-                    line = line.replace("Ntot", "TotalNtot")
+            if line.startswith("PlanetConfig"):
+                line = line.replace(planet_cfg, planet_cfg_fixed)
+            elif line.startswith("FixedNtot"):
+                line = line.replace("FixedNtot", "Ntot")
+            elif line.startswith("Ntot"):
+                line = line.replace("Ntot", "TotalNtot")
 
-                f3.write(line) 
+            f3.write(line) 
 
         f1.close()
         f2.close()
-
-        if innerFixed != "_f":
-            f3.close()
+        f3.close()
 
     else:
         print("The simulation label %s doesn't follow convention." % setupName)
