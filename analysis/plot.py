@@ -9,6 +9,8 @@ import numpy as np
 from scipy import integrate
 # from pathlib import Path
 
+from pathlib import Path
+import os
 # %%
 
 def showFigure(show: bool):
@@ -613,3 +615,96 @@ def integrateDensity(fileName, parFile, logRadialSpacing, useRealUnits=False, ri
     result = integrate.simps(integrate.simps(integrand, azm), rad)
 
     return result
+
+
+
+def makeVideo(framesSaveLocation, videoSaveLocation, folderName, parFile, fieldName, Nframes, logRadialSpacing, fixedScale=True, logScale=True):
+    """Creates a video from the data in the specified folder.
+
+    Args:
+        framesSaveLocation (str): The folder to save the video frames to.
+        videoSaveLocation (str): The path to save the video to.
+        folderName (str): The path to the folder containing the data.
+        parFile (str): The path to the .par file used to obtain the data.
+        fieldName (str): The name of the field to be plotted (e.g. "gasdens")
+        Nframes (int): The number of frames to plot.
+        logRadialSpacing (bool): Whether the radial spacing is linear or logarithmic.
+        fixedScale (bool, optional): Whether to keep the colormap scale fixed throughout the video. Defaults to True.
+        logScale (bool, optional): Whether to use a log scale. Defaults to True.
+    """
+    if framesSaveLocation[-1] != "/":
+        framesSaveLocation += "/"
+
+    Path(framesSaveLocation).mkdir(parents=True, exist_ok=True) # create the save folder if it doesn't exist
+
+    # Fix the color scale by finding the global min/max values
+    vmin, vmax = None, None
+    if fixedScale:
+        vmin, vmax = findMinMax(folderName, fieldName, parFile, logScale, Nframes)
+
+    # Determine the size of the image so we can render the video in the same dimensions
+    size = None
+
+    # Plot the data and save each frame
+    for i in range(0, Nframes+1):
+        try:
+            dataPath = folderName + "/" + fieldName + str(i) + ".dat" # the path to the data file to be plotted
+            saveFileName = framesSaveLocation + str(i) + ".png"
+
+            size = plotPolar(dataPath, parFile, logRadialSpacing, logScale=logScale, saveFileName=saveFileName, vmin=vmin, vmax=vmax)
+            plt.close()
+
+            print("Frame " + str(i) + "/" + str(Nframes) + " done")
+        except FileNotFoundError:
+            print("File #%d doesn't exist. Creating video now." % i)
+            break
+
+
+    size = size.astype(int)
+    videoSize = str(size[0]) + "x" + str(size[1])
+
+    # Compile the frames into a video
+    os.system("""ffmpeg -y -f lavfi -i color=c=white:s=""" + videoSize + """:r=24 -framerate 7 -i """ + framesSaveLocation + """%d.png -filter_complex "[0:v][1:v]overlay=shortest=1,format=yuv420p[out]" -map "[out]" """ + videoSaveLocation)
+
+    print("Done! Video saved to " + videoSaveLocation)
+
+
+def findMinMax(folderName, fieldName, parFile, logScale, Nframes):
+    """Returns the minimum and maximum output values in the data contained in the specified folder.
+
+    Args:
+        folderName (str): The path to the folder containing the data.
+        fieldName (str): The name of the field to be used -- e.g. "gasdens"
+        parFile (str): The path to the .par file used to obtain the data.
+        logScale (bool): Whether to use a log scale.
+        Nframes (int): The number of output files in the folder to include.
+
+    Returns:
+        vmin, vmax (float, float): The minimum and maximum output values.
+    """
+    vmin = None
+    vmax = None
+
+    # Initialise vmin and vmax
+    dataPath = folderName + "/" + fieldName + "0.dat"
+    values, rad, azm = loadData(dataPath, parFile, logScale, logRadialSpacing=False) # whether the radial spacing is linear/logarithmic doesn't matter here
+
+    vmin, vmax = values.min(), values.max()
+
+    # Compare to the rest of the data
+    for i in range(1, Nframes+1):
+        try:
+            dataPath = folderName + "/" + fieldName + str(i) + ".dat"
+
+            # Load the data
+            values, rad, azm = loadData(dataPath, parFile, logScale, logRadialSpacing=False)
+
+            # Update the min and max values
+            vmin = min([vmin, values.min()])
+            vmax = max([vmax, values.max()])
+        except FileNotFoundError:
+            print("File #%d doesn't exist. Exiting findMinMax now." % i)
+            break
+
+    return vmin, vmax
+
