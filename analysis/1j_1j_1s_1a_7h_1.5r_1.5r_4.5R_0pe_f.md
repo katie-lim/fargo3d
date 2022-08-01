@@ -1,5 +1,5 @@
 ---
-status: Running
+status: Not running
 started_at:
 finishes_at:
 m1: 1.0
