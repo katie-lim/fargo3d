@@ -1,5 +1,5 @@
 ---
-status: Queuing
+status: Running
 started_at:
 finishes_at:
 m1: 7.0
@@ -19,6 +19,6 @@ suggested_resonance:: 2:1
 resonant_angles_plot:: ![[resonant_angles_7j_7j_1s_1a_7h_0pe.png]]
 eccentricity_plot:: ![[eccentricity_7j_7j_1s_1a_7h_0pe.png]]
 e1:: 0.200
-e2:: 0.041
+e2:: 0.042
 gas_density_plot:: ![[gas_density_7j_7j_1s_1a_7h_0pe.png]]
 azimuthally_avged_surface_density_plot:: ![[azimuthally_avged_surface_density_7j_7j_1s_1a_7h_0pe.png]]
