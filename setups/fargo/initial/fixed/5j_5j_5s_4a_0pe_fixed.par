@@ -46,7 +46,7 @@ Frame			F		Method for moving the frame of reference
 DT			0.314159265359	Physical time between fine-grain outputs
 Ninterm	 		200		Number of DTs between scalar fields outputs
 Ntot       4000        Total number of DTs to keep the planets fixed for
-TotalNtot			200000		Total number of DTs
+TotalNtot			400000		Total number of DTs
 
 OutputDir		@outputs/5j_5j_5s_4a_0pe
 
