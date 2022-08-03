@@ -1,7 +1,5 @@
 ---
 status: Not running
-started_at:
-finishes_at:
 m1: 1.0
 m2: 1.0
 sigma: 1

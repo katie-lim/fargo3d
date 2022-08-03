@@ -1,7 +1,5 @@
 ---
 status: Running
-started_at:
-finishes_at:
 m1: 7.0
 m2: 7.0
 sigma: 1

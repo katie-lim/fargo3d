@@ -1,7 +1,5 @@
 ---
 status:
-started_at:
-finishes_at:
 m1:
 m2:
 sigma:
