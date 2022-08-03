@@ -514,9 +514,9 @@ def plotPolar(fileName, parFile, logRadialSpacing, logScale=True, saveFileName=N
     return size
 
 
-def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, logScale=False, labels=None, title=None, saveFileName=None, show=True):
+def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, logScale=False, labels=None, title=None, saveFileName=None, show=True, vmin=None, vmax=None):
 
-    plt.figure(figsize=(8, 5), dpi=dpi)
+    fig = plt.figure(figsize=(8, 5), dpi=dpi)
 
     for i in range(len(fileNames)):
         values, rad, azm = loadData(fileNames[i], parFiles[i], False, logRadialSpacing=logRadialSpacing)
@@ -538,17 +538,28 @@ def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, 
             plt.plot(rad, avgSurfDens, linewidth=2)
 
 
+    if vmin != None:
+        plt.ylim(vmin, vmax)
     plt.xlabel("r [" + R0_unit + "]")
+
     if logScale:
         plt.ylabel(r"log($\overline{\Sigma}$(r) [" + density_unit + "])")
     else:
         plt.ylabel(r"$\overline{\Sigma}$(r) [" + density_unit + "]")
+
     plt.title(title)
     if labels: plt.legend()
 
+
+
     if saveFileName: plt.savefig(saveFileName, dpi=dpi)
 
+    size = fig.get_size_inches()*dpi
+
     showFigure(show)
+
+    # Return the dimensions of the image so we can render the video with the same dimensions
+    return size
 
 
 def plotMassOfDisk(setupName, parFile, logRadialSpacing, useRealUnits=False, saveFileName=None, show=True):
@@ -708,3 +719,56 @@ def findMinMax(folderName, fieldName, parFile, logScale, Nframes):
 
     return vmin, vmax
 
+
+
+def makeVideoAzmAvgSurfDens(framesSaveLocation, videoSaveLocation, folderName, parFile, Nframes, logRadialSpacing, fixedScale=True, logScale=True):
+    """Creates a video of the azimuthally averaged surface density from the data in the specified folder.
+
+    Args:
+        framesSaveLocation (str): The folder to save the video frames to.
+        videoSaveLocation (str): The path to save the video to.
+        folderName (str): The path to the folder containing the data.
+        parFile (str): The path to the .par file used to obtain the data.
+        Nframes (int): The number of frames to plot.
+        logRadialSpacing (bool): Whether the radial spacing is linear or logarithmic.
+        fixedScale (bool, optional): Whether to keep the colormap scale fixed throughout the video. Defaults to True.
+        logScale (bool, optional): Whether to use a log scale. Defaults to True.
+    """
+    if framesSaveLocation[-1] != "/":
+        framesSaveLocation += "/"
+
+    Path(framesSaveLocation).mkdir(parents=True, exist_ok=True) # create the save folder if it doesn't exist
+
+    # Fix the color scale by finding the global min/max values
+    vmin, vmax = None, None
+    if fixedScale:
+        vmin, vmax = findMinMax(folderName, "gasdens", parFile, logScale, Nframes)
+
+    # Determine the size of the image so we can render the video in the same dimensions
+    size = None
+
+    # Plot the data and save each frame
+    for i in range(0, Nframes+1):
+        try:
+            dataPath = folderName + "/" + "gasdens" + str(i) + ".dat" # the path to the data file to be plotted
+            saveFileName = framesSaveLocation + str(i) + ".png"
+
+            time = indexToRealTime(i, parFile)
+            title = "t = %.2f %s" % (time, unit_of_time)
+
+            size = plotAzimuthallyAvgedSurfaceDensities([dataPath], [parFile], logRadialSpacing, logScale=logScale, saveFileName=saveFileName, vmin=vmin, vmax=vmax, show=False, title=title)
+            plt.close()
+
+            print("Frame " + str(i) + "/" + str(Nframes) + " done")
+        except FileNotFoundError:
+            print("File #%d doesn't exist. Creating video now." % i)
+            break
+
+
+    size = size.astype(int)
+    videoSize = str(size[0]) + "x" + str(size[1])
+
+    # Compile the frames into a video
+    os.system("""ffmpeg -y -f lavfi -i color=c=white:s=""" + videoSize + """:r=24 -framerate 7 -i """ + framesSaveLocation + """%d.png -filter_complex "[0:v][1:v]overlay=shortest=1,format=yuv420p[out]" -map "[out]" """ + videoSaveLocation)
+
+    print("Done! Video saved to " + videoSaveLocation)
