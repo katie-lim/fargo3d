@@ -21,7 +21,7 @@ TauDamp 0.3
 
 ### Planet parameters
 
-PlanetConfig		planets/fixed/3j_1j_1.5r_1.5r_fixed.cfg
+PlanetConfig		planets/inner_fixed/3j_1j_1.5r_1.5r_inner_fixed.cfg
 MassTaper           2885.7370
 ThicknessSmoothing 	0.6
 RocheSmoothing 		0.0

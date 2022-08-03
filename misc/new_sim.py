@@ -87,11 +87,11 @@ def generate_par_file(setupName):
 
         if innerFixed == "_f":
             if planetRadii == "":
-                planet_cfg = "planets/fixed/%s_fixed.cfg" % planetNames
-                planet_cfg_fixed = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+                planet_cfg = "planets/inner_fixed/%s_inner_fixed.cfg" % planetNames
+                planet_cfg_fixed = "planets/fixed/%s_fixed.cfg" % planetNames
             else:
-                planet_cfg = "planets/fixed/%s_%s_fixed.cfg" % (planetNames, planetRadii[:-1])
-                planet_cfg_fixed = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
+                planet_cfg = "planets/inner_fixed/%s_%s_inner_fixed.cfg" % (planetNames, planetRadii[:-1])
+                planet_cfg_fixed = "planets/fixed/%s_%s_fixed.cfg" % (planetNames, planetRadii[:-1])
         else:
             if planetRadii == "":
                 planet_cfg = "planets/%s.cfg" % planetNames
