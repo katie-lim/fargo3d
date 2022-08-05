@@ -2,6 +2,7 @@
 bin/*
 outputs/*
 initial_outputs/*
+video/*
 fargo3d
 fargo3d_photoevap
 arch/*

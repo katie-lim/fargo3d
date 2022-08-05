@@ -186,6 +186,7 @@ columns:
     position: 3
     options:
       - { label: "photoevaporation", backgroundColor: "hsl(154.861876021984,95.00000000000011%,90%)"}
+      - { label: "review", backgroundColor: "hsl(27.88508925327025,35.768735219255774%,77.658855%)"}
     config:
       enable_media_view: true
       media_width: 100

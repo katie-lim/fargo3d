@@ -1,13 +1,13 @@
 ---
 status: Not running
-m1: 3.0
-m2: 3.0
+m1: 3
+m2: 3
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
-notes::
+notes:: hits inner boundary
 semi_major_axes_plot:: ![semi_major_axes_3j_3j_1s_1a_7h_0pe.png](plots/semi_major_axes/semi_major_axes_3j_3j_1s_1a_7h_0pe.png)
 period_ratio:: 2.11 ± 0.05
 period_ratio_plot:: ![period_ratio_3j_3j_1s_1a_7h_0pe.png](plots/period_ratio/period_ratio_3j_3j_1s_1a_7h_0pe.png)
