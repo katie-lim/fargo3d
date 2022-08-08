@@ -721,7 +721,7 @@ def findMinMax(folderName, fieldName, parFile, logScale, Nframes):
 
 
 
-def makeVideoAzmAvgSurfDens(framesSaveLocation, videoSaveLocation, folderName, parFile, Nframes, logRadialSpacing, fixedScale=True, logScale=True):
+def makeVideoAzmAvgSurfDens(framesSaveLocation, videoSaveLocation, folderName, parFile, Nframes, logRadialSpacing, fixedScale=True, logScale=True, vmax=None):
     """Creates a video of the azimuthally averaged surface density from the data in the specified folder.
 
     Args:
@@ -740,9 +740,11 @@ def makeVideoAzmAvgSurfDens(framesSaveLocation, videoSaveLocation, folderName, p
     Path(framesSaveLocation).mkdir(parents=True, exist_ok=True) # create the save folder if it doesn't exist
 
     # Fix the color scale by finding the global min/max values
-    vmin, vmax = None, None
+    # vmin, vmax = None, None
+    vmin = 0
     if fixedScale:
-        vmin, vmax = findMinMax(folderName, "gasdens", parFile, logScale, Nframes)
+        if vmax == None:
+            vmin, vmax = findMinMax(folderName, "gasdens", parFile, logScale, Nframes)
 
     # Determine the size of the image so we can render the video in the same dimensions
     size = None
