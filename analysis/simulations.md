@@ -194,6 +194,23 @@ columns:
       media_height: 100
       isInline: false
       source_data: current_folder
+  __modified__:
+    key: __modified__
+    input: calendar_time
+    label: Modified
+    accessor: __modified__
+    isMetadata: true
+    isDragDisabled: false
+    skipPersist: false
+    csvCandidate: true
+    isSorted: false
+    isSortedDesc: false
+    config:
+      enable_media_view: true
+      media_width: 100
+      media_height: 100
+      isInline: false
+      source_data: current_folder
 config:
   enable_show_state: false
   group_folder_column: 
@@ -201,7 +218,7 @@ config:
   cell_size: compact
   sticky_first_column: true
   show_metadata_created: false
-  show_metadata_modified: false
+  show_metadata_modified: true
   source_data: current_folder
   source_form_result: root
 filters:
