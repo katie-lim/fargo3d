@@ -1,0 +1,20 @@
+---
+status: Not running
+m1: 3.0
+m2: 3.0
+sigma: 1
+alpha: 1
+photoevaporation: 0
+---
+
+notes::
+semi_major_axes_plot:: ![semi_major_axes_3j_3j_1s_1a_7h_0pe_f.png](plots/semi_major_axes/semi_major_axes_3j_3j_1s_1a_7h_0pe_f.png)
+period_ratio:: 2.77 ± 0.05
+period_ratio_plot:: ![period_ratio_3j_3j_1s_1a_7h_0pe_f.png](plots/period_ratio/period_ratio_3j_3j_1s_1a_7h_0pe_f.png)
+suggested_resonance:: 
+resonant_angles_plot:: ![resonant_angles_3j_3j_1s_1a_7h_0pe_f.png](plots/resonant_angles/resonant_angles_3j_3j_1s_1a_7h_0pe_f.png)
+eccentricity_plot:: ![eccentricity_3j_3j_1s_1a_7h_0pe_f.png](plots/eccentricity/eccentricity_3j_3j_1s_1a_7h_0pe_f.png)
+e1:: 0.004
+e2:: 0.017
+gas_density_plot:: ![gas_density_3j_3j_1s_1a_7h_0pe_f.png](plots/gas_density/gas_density_3j_3j_1s_1a_7h_0pe_f.png)
+azimuthally_avged_surface_density_plot:: ![azimuthally_avged_surface_density_3j_3j_1s_1a_7h_0pe_f.png](plots/azimuthally_avged_surface_density/azimuthally_avged_surface_density_3j_3j_1s_1a_7h_0pe_f.png)
