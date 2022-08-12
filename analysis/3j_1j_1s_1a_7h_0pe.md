@@ -1,5 +1,5 @@
 ---
-status: Queuing
+status: Not running
 m1: 3.0
 m2: 1.0
 sigma: 1

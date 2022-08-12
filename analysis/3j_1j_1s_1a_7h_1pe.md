@@ -1,5 +1,5 @@
 ---
-status: Queuing
+status: Not running
 m1: 3.0
 m2: 1.0
 sigma: 1
@@ -15,6 +15,6 @@ suggested_resonance:: 2:1
 resonant_angles_plot:: ![resonant_angles_3j_1j_1s_1a_7h_1pe.png](plots/resonant_angles/resonant_angles_3j_1j_1s_1a_7h_1pe.png)
 eccentricity_plot:: ![eccentricity_3j_1j_1s_1a_7h_1pe.png](plots/eccentricity/eccentricity_3j_1j_1s_1a_7h_1pe.png)
 e1:: 0.076
-e2:: 0.087
+e2:: 0.088
 gas_density_plot:: ![gas_density_3j_1j_1s_1a_7h_1pe.png](plots/gas_density/gas_density_3j_1j_1s_1a_7h_1pe.png)
 azimuthally_avged_surface_density_plot:: ![azimuthally_avged_surface_density_3j_1j_1s_1a_7h_1pe.png](plots/azimuthally_avged_surface_density/azimuthally_avged_surface_density_3j_1j_1s_1a_7h_1pe.png)
