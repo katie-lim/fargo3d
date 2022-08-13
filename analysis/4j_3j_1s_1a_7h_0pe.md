@@ -1,5 +1,5 @@
 ---
-status: Not running
+status: Running
 m1: 4.0
 m2: 3.0
 sigma: 1
@@ -9,7 +9,7 @@ photoevaporation: 0
 
 notes::
 semi_major_axes_plot:: ![semi_major_axes_4j_3j_1s_1a_7h_0pe.png](plots/semi_major_axes/semi_major_axes_4j_3j_1s_1a_7h_0pe.png)
-period_ratio:: 2.75 ± 0.05
+period_ratio:: 2.75 ± 0.06
 period_ratio_plot:: ![period_ratio_4j_3j_1s_1a_7h_0pe.png](plots/period_ratio/period_ratio_4j_3j_1s_1a_7h_0pe.png)
 suggested_resonance:: 
 resonant_angles_plot:: ![resonant_angles_4j_3j_1s_1a_7h_0pe.png](plots/resonant_angles/resonant_angles_4j_3j_1s_1a_7h_0pe.png)
