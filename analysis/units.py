@@ -3,9 +3,10 @@ import numpy as np
 dpi = 200
 
 # Units
+au = 1.496e11 # m
 R0 = 20
 R0_unit = "AU"
-R0_in_m = 20*1.496e11
+R0_in_m = 20*au
 Mstar = 1
 Mstar_unit = "M_Sun"
 Mstar_in_kg = 1.989e30

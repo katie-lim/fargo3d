@@ -1,10 +1,10 @@
 ---
-status: Running
-m1: 4.0
-m2: 3.0
+status: Not running
+m1: 4
+m2: 3
 sigma: 1
 alpha: 1
-photoevaporation: 0
+photoevaporation: 
 ---
 
 notes::

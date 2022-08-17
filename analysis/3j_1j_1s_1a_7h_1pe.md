@@ -1,10 +1,12 @@
 ---
-status: Running
-m1: 3.0
-m2: 1.0
+status: Queuing
+m1: 3
+m2: 1
 sigma: 1
 alpha: 1
 photoevaporation: 1
+tags:
+ - data loss
 ---
 
 notes::

@@ -562,6 +562,86 @@ def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, 
     return size
 
 
+
+def plotAzimuthallyAvgedOrbitalVel(velocityFileNames, surfDensFileNames, parFiles, logRadialSpacing, labels=None, title=None, saveFileName=None, show=True, vmin=None, vmax=None, massWeighted=False, angularVelocity=False):
+
+    fig = plt.figure(figsize=(8, 5), dpi=dpi)
+
+    for i in range(len(velocityFileNames)):
+        surfDensVals, rad, azm = loadData(surfDensFileNames[i], parFiles[i], False, logRadialSpacing=logRadialSpacing)
+        velocityVals, rad, azm = loadData(velocityFileNames[i], parFiles[i], False, logRadialSpacing=logRadialSpacing, useRealUnits=False)
+
+        velocityVals = velocityVals.transpose() # make the radial coordinate r the first index
+        surfDensVals = surfDensVals.transpose() # make the radial coordinate r the first index
+
+        avgVals = []
+
+        for i in range(len(velocityVals)):
+            vals = velocityVals[i]
+            massVals = surfDensVals[i]
+
+            if massWeighted:
+                avgVals.append(np.average(vals, weights=massVals))
+            else:
+                avgVals.append(np.average(vals))
+
+
+        # Velocities in R0/time unit
+        avgVals = np.array(avgVals)
+
+        avgVals *= R0_in_m
+        codeTimeUnitInS = convertToRealTime(1) * unit_of_time_in_s
+        avgVals /= codeTimeUnitInS
+
+
+        # Convert velocity to angular velocity by dividing by R
+        if angularVelocity:
+            avgVals /= (rad*R0_in_m)
+
+
+        # Overlay Keplerian curves
+        GM = 6.67e-11*Mstar_in_kg
+
+        if angularVelocity:
+            kepler = np.sqrt(GM/((rad*R0_in_m)**3))
+        else:
+            kepler = np.sqrt(GM/(rad*R0_in_m))
+
+
+        rad *= R0
+        if labels:
+            plt.plot(rad, avgVals, linewidth=2, label=labels[i])
+        else:
+            plt.plot(rad, avgVals, linewidth=2)
+
+        plt.plot(rad, kepler, linewidth=2, label="Keplerian values")
+
+
+    if vmin != None:
+        plt.ylim(vmin, vmax)
+    plt.xlabel("r [" + R0_unit + "]")
+
+    if angularVelocity:
+        plt.ylabel(r"angular velocity [s$^{-1}$]")
+    else:
+        plt.ylabel(r"orbital velocity [ms$^{-1}$]")
+
+    plt.title(title)
+    plt.legend()
+
+
+
+    if saveFileName: plt.savefig(saveFileName, dpi=dpi)
+
+    size = fig.get_size_inches()*dpi
+
+    showFigure(show)
+
+    # Return the dimensions of the image so we can render the video with the same dimensions
+    return size
+
+
+
 def plotMassOfDisk(setupName, parFile, logRadialSpacing, useRealUnits=False, saveFileName=None, show=True):
 
     lastOutputNo = findLastOutputNumber(setupName)
