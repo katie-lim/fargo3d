@@ -189,6 +189,7 @@ columns:
       - { label: "review", backgroundColor: "hsl(27.88508925327025,35.768735219255774%,77.658855%)"}
       - { label: "fixed inner planet", backgroundColor: "hsl(219.34229651162786,95.00000000000011%,90%)"}
       - { label: "data loss", backgroundColor: "hsl(333, 95%, 90%)"}
+      - { label: "fixed data loss", backgroundColor: "hsl(163, 95%, 90%)"}
     config:
       enable_media_view: true
       media_width: 100
