@@ -18,7 +18,10 @@ def getRunningSims():
         jobDetails = os.popen("qstat -f %s" % jobID).read()
 
         res = re.search("Job_Name = ([\S]+)", jobDetails)
-        jobName = res.groups()[0]
+        try:
+            jobName = res.groups()[0]
+        except:
+            return
 
         if jobName == "jupyterhub":
             continue
