@@ -742,7 +742,7 @@ def makeVideo(framesSaveLocation, videoSaveLocation, folderName, parFile, fieldN
             dataPath = folderName + "/" + fieldName + str(i) + ".dat" # the path to the data file to be plotted
             saveFileName = framesSaveLocation + str(i) + ".png"
 
-            size = plotPolar(dataPath, parFile, logRadialSpacing, logScale=logScale, saveFileName=saveFileName, vmin=vmin, vmax=vmax)
+            size = plotPolar(dataPath, parFile, logRadialSpacing, logScale=logScale, saveFileName=saveFileName, vmin=vmin, vmax=vmax, show=False)
             plt.close()
 
             print("Frame " + str(i) + "/" + str(Nframes) + " done")
