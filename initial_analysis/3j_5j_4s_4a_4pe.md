@@ -1,10 +1,12 @@
 ---
 status: Not running
-m1: 3.0
-m2: 5.0
+m1: 3
+m2: 5
 sigma: 4
 alpha: 4
 photoevaporation: 4
+tags:
+ - final
 ---
 
 notes:: $e_1$ and $e_2$ fall without PE, but grow with PE

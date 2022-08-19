@@ -1,10 +1,12 @@
 ---
 status: Not running
-m1: 2.0
-m2: 2.0
+m1: 2
+m2: 2
 sigma: 2
 alpha: 4
 photoevaporation: 2
+tags:
+ - final
 ---
 
 notes:: $e_1$ increasing faster with PE

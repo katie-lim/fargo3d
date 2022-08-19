@@ -1,10 +1,12 @@
 ---
 status: Not running
-m1: 3.0
-m2: 3.0
+m1: 3
+m2: 3
 sigma: 3
 alpha: 4
 photoevaporation: 3
+tags:
+ - final
 ---
 
 notes:: $e_1$ beginning to show runaway growth?

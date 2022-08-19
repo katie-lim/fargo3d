@@ -1,10 +1,12 @@
 ---
 status: Not running
-m1: 2.0
-m2: 2.0
+m1: 2
+m2: 2
 sigma: 1
 alpha: 4
 photoevaporation: 1
+tags:
+ - final
 ---
 
 notes:: eccentricities similar to those without PE at the moment

@@ -1,12 +1,13 @@
 ---
 status: Not running
-m1: 2.0
-m2: 2.0
+m1: 2
+m2: 2
 sigma: 2
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 tags:
  - photoevaporation
+ - final
 ---
 
 notes:: "2:1 resonance, $e_1$ rising"

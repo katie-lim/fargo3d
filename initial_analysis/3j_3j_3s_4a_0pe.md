@@ -1,12 +1,13 @@
 ---
 status: Not running
-m1: 3.0
-m2: 3.0
+m1: 3
+m2: 3
 sigma: 3
 alpha: 4
-photoevaporation: 0
+photoevaporation: 
 tags:
  - photoevaporation
+ - final
 ---
 
 notes:: "2:1 resonance, eccentricities flattening out, little migration"

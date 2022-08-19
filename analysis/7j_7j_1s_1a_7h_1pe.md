@@ -1,10 +1,12 @@
 ---
 status: Running
-m1: 7.0
-m2: 7.0
+m1: 7
+m2: 7
 sigma: 1
 alpha: 1
 photoevaporation: 1
+tags:
+ - final
 ---
 
 notes:: PE causes planets to leave resonance, $e_1$ declines?

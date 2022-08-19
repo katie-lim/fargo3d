@@ -1,12 +1,13 @@
 ---
-status: Running
-m1: 7.0
-m2: 7.0
+status: Not running
+m1: 7
+m2: 7
 sigma: 1
 alpha: 1
 photoevaporation: 0
 tags:
  - photoevaporation
+ - final
 ---
 
 notes:: "2:1 resonance"
