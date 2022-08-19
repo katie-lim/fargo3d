@@ -1,10 +1,10 @@
 import os
 
-setupName = "7j_7j_1s_0.7a_8h_0pe"
+setupName = "7j_7j_0.667s_1a_9h_0.667pe"
 files_to_remove = []
 output_types = ["gasdens", "gasenergy", "gasvx", "gasvy", "summary"]
 
-for i in range(1282, 1331):
+for i in range(1279, 1532+1):
     for output_type in output_types:
         files_to_remove.append("outputs/%s/%s%d.dat" % (setupName, output_type, i))
 
