@@ -78,7 +78,7 @@ for (setupName, photoevapStartTime) in sims:
 
 
     # Generate .par files for the new simulation with PE
-    os.system("python misc/new_sim.py %s" % setupName)
+    # os.system("python misc/new_sim.py %s" % setupName)
     print("")
 
 # %%
