@@ -563,6 +563,113 @@ def plotAzimuthallyAvgedSurfaceDensities(fileNames, parFiles, logRadialSpacing, 
 
 
 
+
+def getPlanetRowFromPlanetFile(fileName, desiredOutputNo):
+    a = np.loadtxt(fileName)
+
+    outputNo, x, y, z, vx, vy, vz, mass, date, rotationRate = a.transpose()
+
+    # Find the index in the arrays of the output with the specified outputNo
+    # This is necessary since some outputs/rows are duplicated
+    index = np.nonzero(outputNo == desiredOutputNo)[0][0]
+
+    # Find duplicate rows for debugging purposes
+    u, c = np.unique(outputNo, return_counts=True)
+    dup = u[c > 1]
+    print("Duplicate rows:", dup)
+
+    return a[index]
+
+
+
+
+def plotResonanceLocations(gasdensFile, gasvxFile, parFile, planetFile, outputIndexNo, planetLabel, title=None, saveFileName=None, show=True, logRadialSpacing=True, massWeighted=True, Nresonances=2, color="red"):
+    
+    # PLOT ANGULAR VELOCITY -------------------------------
+    fig = plt.figure(figsize=(8, 5), dpi=dpi)
+
+    surfDensVals, rad, azm = loadData(gasdensFile, parFile, False, logRadialSpacing=logRadialSpacing)
+    velocityVals, rad, azm = loadData(gasvxFile, parFile, False, logRadialSpacing=logRadialSpacing, useRealUnits=False)
+
+    # Make the radial coordinate r the first index
+    velocityVals = velocityVals.transpose()
+    surfDensVals = surfDensVals.transpose()
+
+    avgVals = []
+
+    for i in range(len(velocityVals)):
+        vals = velocityVals[i]
+        massVals = surfDensVals[i]
+
+        if massWeighted:
+            avgVals.append(np.average(vals, weights=massVals))
+        else:
+            avgVals.append(np.average(vals))
+
+
+    # Velocities in R0/time unit
+    avgVals = np.array(avgVals)
+
+    avgVals *= R0_in_m
+    codeTimeUnitInS = convertToRealTime(1) * unit_of_time_in_s
+    avgVals /= codeTimeUnitInS
+
+
+    # Convert velocity to angular velocity by dividing by R
+    avgVals /= (rad*R0_in_m)
+
+    # Overlay Keplerian curves
+    GM = 6.67e-11*Mstar_in_kg
+    kepler = np.sqrt(GM/((rad*R0_in_m)**3))
+
+
+    rad *= R0
+    plt.plot(rad, avgVals, linewidth=2)
+    plt.plot(rad, kepler, linewidth=2, label="Keplerian values")
+
+
+    plt.xlabel("r [" + R0_unit + "]")
+    plt.ylabel(r"angular velocity [s$^{-1}$]")
+
+
+    # -----------------------------------------------
+
+    # Calculate and plot resonance locations
+
+    # Get planet's orbital velocity
+    row = getPlanetRowFromPlanetFile(planetFile, outputIndexNo)
+    outputNo, x, planety, z, planetvx, vy, vz, mass, date, rotationRate = row
+
+    # Convert to real units
+    planetvx *= R0_in_m
+    planetvx /= codeTimeUnitInS
+
+    # Convert velocity to angular velocity by dividing by R
+    planetAngVel = planetvx / (planety*R0_in_m)
+
+
+    # Take absolute value in case of negative velocities
+    planetAngVel = abs(planetAngVel)
+
+    # Overlay it on the plot
+    plt.hlines(planetAngVel, rad[0], rad[-1], color=color, label="Planet %d" % planetLabel)
+    
+    # Overlay resonance locations
+    res = [(j+1)*planetAngVel for j in range(Nresonances)] + [planetAngVel/(j+1) for j in range(Nresonances)]
+
+    plt.hlines(res, rad[0], rad[-1], color=color, linestyles="dotted", label="Resonant with planet %d" % planetLabel)
+
+
+
+    plt.title(title)
+    plt.legend()
+    if saveFileName: plt.savefig(saveFileName, dpi=dpi)
+    showFigure(show)
+
+    return
+
+
+
 def plotAzimuthallyAvgedOrbitalVel(velocityFileNames, surfDensFileNames, parFiles, logRadialSpacing, labels=None, title=None, saveFileName=None, show=True, vmin=None, vmax=None, massWeighted=False, angularVelocity=False):
 
     fig = plt.figure(figsize=(8, 5), dpi=dpi)
