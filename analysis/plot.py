@@ -7,11 +7,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import integrate
 import pandas as pd
-# from matplotlib.collections import LineCollection
-# from pathlib import Path
 
 from pathlib import Path
 import os
+
+
+import matplotlib.font_manager as font_manager
+
+def useComputerModernSans():
+    font_path = './analysis/lmsans12-regular.otf'
+    font_manager.fontManager.addfont(font_path)
+    prop = font_manager.FontProperties(fname=font_path)
+
+    plt.rcParams['font.family'] = 'sans-serif'
+    plt.rcParams['font.sans-serif'] = prop.get_name()
+    plt.rcParams.update({'font.size': 12})
+
+useComputerModernSans()
+
 # %%
 
 def showFigure(show: bool):
