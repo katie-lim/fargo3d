@@ -109,9 +109,6 @@ def plotResultsForSimulation(setupName, show=True):
 
 def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, suggestedResonance, orbit0, orbit1):
 
-    sim: Simulation = getSimulationFromLabel(setupName)
-    simulationParams = list(sim.keys())
-    simulationParamValues = list(sim.values())
 
     # Add other metadata
     status = "Not running"
@@ -123,6 +120,16 @@ def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, sugg
 
     simulationParams.append("status")
     simulationParamValues.append(status)
+
+
+    simulationLabelFollowsConvention = False
+    try:
+        sim: Simulation = getSimulationFromLabel(setupName)
+        simulationParams = list(sim.keys())
+        simulationParamValues = list(sim.values())
+        simulationLabelFollowsConvention = True
+    except:
+        pass
 
 
     e1 = getEccentricity(orbit0)
@@ -142,9 +149,10 @@ def writeSimulationResultsToFile(setupName, periodRatio, stdDevPeriodRatio, sugg
 
 
         # Add simulation parameters
-        for (param, value) in zip(simulationParams, simulationParamValues):
-            if line.startswith("%s:" % param):
-                return "%s: %s" % (param, value)
+        if simulationLabelFollowsConvention:
+            for (param, value) in zip(simulationParams, simulationParamValues):
+                if line.startswith("%s:" % param):
+                    return "%s: %s" % (param, value)
 
 
         return line.rstrip()
