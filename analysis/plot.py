@@ -5,8 +5,9 @@ import re
 
 import matplotlib.pyplot as plt
 import numpy as np
-# from matplotlib.collections import LineCollection
 from scipy import integrate
+import pandas as pd
+# from matplotlib.collections import LineCollection
 # from pathlib import Path
 
 from pathlib import Path
@@ -113,7 +114,7 @@ def loadData(dataFile, parFile, logScale, logRadialSpacing, useRealUnits=True):
 
 
 
-def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False):
+def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False, opacity=1, showMovingAverage=True):
     """Plots the specified orbital parameter against time for multiple setups.
 
     Args:
@@ -126,7 +127,10 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
     parameterName = parameterName.lower()
     plt.figure(dpi=dpi)
 
+    colors = [u'#1f77b4', u'#ff7f0e', u'#2ca02c', u'#d62728', u'#9467bd', u'#8c564b', u'#e377c2', u'#7f7f7f', u'#bcbd22', u'#17becf']
+
     # Load the data
+
     for i in range(len(fileNames)):
         data = np.loadtxt(fileNames[i])
         date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
@@ -134,14 +138,24 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
         # Convert to real units
         date = [convertToRealTime(time) for time in date]
         semiMajorAxis *= R0
+        ydata = None
 
         # Plot the data
         if parameterName == "eccentricity":
-            plt.plot(date[Ni:Nf], eccentricity[Ni:Nf], label=labels[i])
+            ydata = eccentricity
         elif parameterName == "semimajoraxis":
-            plt.plot(date[Ni:Nf], semiMajorAxis[Ni:Nf], label=labels[i])
+            ydata = semiMajorAxis
         else:
             raise Exception("The parameter name " + parameterName + " is not recognised.")
+
+
+        if showMovingAverage:
+            movingAvg = movingAverageCentered(ydata[Ni:Nf], 1000)
+            plt.plot(date[Ni:Nf], movingAvg, color=colors[i], label=labels[i])
+            plt.plot(date[Ni:Nf], ydata[Ni:Nf], alpha=opacity, color=colors[i])
+        else:
+            plt.plot(date[Ni:Nf], ydata[Ni:Nf], label=labels[i], alpha=opacity, color=colors[i])
+
 
 
     if parameterName == "eccentricity":
@@ -164,6 +178,12 @@ def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2
         showFigure(show)
 
 
+
+def movingAverageCentered(data, Npts):
+    return pd.Series(data).rolling(window=Npts, center=True).mean().to_numpy()
+
+
+
 def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=True):
     parameterName = parameterName.lower()
     setupNameNoPe = getSetupNameNoPe(setupName)
@@ -173,17 +193,24 @@ def plotOrbitalParameterPE(setupName, parameterName, saveFileName=None, show=Tru
     labels = ["Planet 1 (no PE)", "Planet 2 (no PE)", "Planet 1 (with PE)", "Planet 2 (with PE)"]
 
 
-    plotOrbitalParameter(filesInclNoPe, parameterName, labels=labels, show=show, dontClose=True)
+    plotOrbitalParameter(filesInclNoPe, parameterName, labels=labels, show=show, dontClose=True, opacity=0.15, showMovingAverage=True)
+
 
     # Add vertical line at time when PE is switched on
-    data = np.loadtxt(filesInclNoPe[2])
+    data = np.loadtxt(filesInclNoPe[2]) # Inner planet
     date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
     t = convertToRealTime(date[0])
 
     if (parameterName == "semimajoraxis"):
-        y = np.max(semiMajorAxis)
-    if (parameterName == "eccentricity"):
+        # Obtain maximum semiMajorAxis from the outer planet
+        data = np.loadtxt(filesInclNoPe[1]) # Inner planet
+        date, eccentricity, semiMajorAxis, meanAnomaly, trueAnomaly, argOfPeriastron, rotationAngle, inclination, longitude, angleOfPerihelion = data.transpose()
+
+        y = np.max(semiMajorAxis)*R0
+
+    elif (parameterName == "eccentricity"):
         y = np.max(eccentricity)
+
     plt.vlines(t, 0, y, linestyles="dotted", colors="k")
     plt.text(t+0.01*convertToRealTime(date[-1]), y/2, "PE begins", rotation=90, verticalalignment="center")
 
