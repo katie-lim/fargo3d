@@ -55,7 +55,11 @@ sims = [
 #	"7j_10j_8s_4a_7.5R_0pe"
 
     "2j_2j_1s_4a_0pe",
+    "2j_2j_1s_4a_1pe",
+    "2j_2j_1s_4a_10pe",
     "2j_2j_2s_4a_0pe",
+    "2j_2j_2s_4a_2pe",
+    "2j_2j_2s_4a_20pe",
     "3j_3j_3s_4a_3pe",
     "3j_5j_4s_4a_0pe",
     "3j_5j_4s_4a_4pe",
