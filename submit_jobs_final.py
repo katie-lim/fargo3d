@@ -66,9 +66,10 @@ sims = [
     "3j_3j_3s_4a_0pe",
     "7j_10j_8s_4a_7.5R_0pe",
     "10j_10j_0.2667s_5a_6h_0pe",
-    "3j_3j_3s_4a_1pe",
-    "3j_3j_3s_4a_9pe",
-      ]
+    # "3j_3j_3s_4a_1pe",
+    # "3j_3j_3s_4a_9pe",
+    "3j_3j_3s_4a_30pe",
+    ]
 
 runningSims = getRunningSims()
 
