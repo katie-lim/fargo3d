@@ -59,7 +59,7 @@ def plotResultsForSimulation(setupName, show=True):
     orbit1 = "outputs/%s/orbit1.dat"% setupName
     files = [orbit0, orbit1]
 
-    photoevap = not ("0pe" in setupName)
+    photoevap = not ("_0pe" in setupName)
 
     lastOutputNumber = findLastOutputNumber(setupName)
     lastGasdens = "outputs/%s/gasdens%d.dat" % (setupName, lastOutputNumber)

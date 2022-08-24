@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ "$1" == *"0pe"* ]]
+if [[ "$1" == *"_0pe"* ]]
 then
     echo "Running simulation without photoevaporation."
     if [ -d "outputs/$1" ]
