@@ -15,6 +15,6 @@ suggested_resonance:: 2:1
 resonant_angles_plot:: ![resonant_angles_3j_3j_3s_4a_3pe.png](plots/resonant_angles/resonant_angles_3j_3j_3s_4a_3pe.png)
 eccentricity_plot:: ![eccentricity_3j_3j_3s_4a_3pe.png](plots/eccentricity/eccentricity_3j_3j_3s_4a_3pe.png)
 e1:: 0.321
-e2:: 0.137
+e2:: 0.136
 gas_density_plot:: ![gas_density_3j_3j_3s_4a_3pe.png](plots/gas_density/gas_density_3j_3j_3s_4a_3pe.png)
 azimuthally_avged_surface_density_plot:: ![azimuthally_avged_surface_density_3j_3j_3s_4a_3pe.png](plots/azimuthally_avged_surface_density/azimuthally_avged_surface_density_3j_3j_3s_4a_3pe.png)
