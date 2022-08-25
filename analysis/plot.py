@@ -127,7 +127,7 @@ def loadData(dataFile, parFile, logScale, logRadialSpacing, useRealUnits=True):
 
 
 
-def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False, opacity=1, showMovingAverage=True):
+def plotOrbitalParameter(fileNames, parameterName, labels=["Planet 1", "Planet 2"], title=None, saveFileName=None, Ni=0, Nf=None, show=True, dontClose=False, opacity=0.15, showMovingAverage=True):
     """Plots the specified orbital parameter against time for multiple setups.
 
     Args:
